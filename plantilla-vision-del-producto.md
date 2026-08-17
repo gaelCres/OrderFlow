@@ -18,9 +18,9 @@
 
 *Instrucción: nombre del sistema y qué hace, en un párrafo que cualquier persona entienda sin ser del área. Si necesitas usar una palabra técnica para explicarlo, todavía no está listo.*
 
-**Nombre del sistema:**
+**Nombre del sistema:** OrderFlow
 
-**Descripción:**
+**Descripción:** Es una herramienta digital para tiendas de embutidos y abarrotes que ayuda a saber exactamente cuánto producto pedir a sus proveedores para evitar que la mercancía se eche a perder en bodega o que las vitrinas se queden vacías. El sistema revisa lo que se vende día a día y genera automáticamente la lista de compras ideal para cada proveedor, indicando la cantidad justa de kilos o piezas que se deben encargar.
 
 ---
 
@@ -28,9 +28,9 @@
 
 *Instrucción: qué problema resuelve, a quién le sirve y, muy importante, qué hace esa gente hoy para arreglárselas sin el sistema. Esa última parte es la que revela el problema real.*
 
-**El problema:**
+**El problema:** La falta de control en el inventario y en las compras provoca pérdidas de dinero de dos formas: por un lado, se tiran a la basura productos perecederos (como jamones, quesos o embutidos) porque vencen antes de venderse; por otro lado, se pierden ventas cuando un cliente busca un producto popular y no hay existencia disponible.
 
-**Cómo se resuelve hoy sin el sistema:**
+**Cómo se resuelve hoy sin el sistema:** El encargado o dueño camina por la bodega y las vitrinas revisando "a ojo" qué se ve vacío, o anota en un cuaderno lo que cree que se venderá durante la semana baselineado únicamente en su intuición y memoria.
 
 **Usuarios del sistema:**
 
