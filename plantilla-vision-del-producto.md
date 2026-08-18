@@ -8,9 +8,9 @@
 
 ---
 
-**Autor:**
-**Fecha de la última versión:**
-**Repositorio:**
+**Autor:** Gael Crespo Maceiras
+**Fecha de la última versión:** 18/08/2026
+**Repositorio:** https://github.com/gaelCres/Clase_Ingenieria_Software
 
 ---
 
