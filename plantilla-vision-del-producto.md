@@ -20,7 +20,7 @@
 
 **Nombre del sistema:** OrderFlow
 
-**Descripción:** Es una herramienta digital para tiendas de embutidos y abarrotes que ayuda a saber exactamente cuánto producto pedir a sus proveedores para evitar que la mercancía se eche a perder en bodega o que las vitrinas se queden vacías. El sistema revisa lo que se vende día a día y genera automáticamente la lista de compras ideal para cada proveedor, indicando la cantidad justa de kilos o piezas que se deben encargar.
+**Descripción:** Es una herramienta digital para tiendas de embutidos y abarrotes que ayuda a saber exactamente cuánto producto pedir a sus proveedores para evitar que la mercancía se eche a perder en bodega o que las vitrinas se queden vacías. El sistema revisa lo que se vende día a día y genera automáticamente la lista de compras ideal para cada proveedor, indicando la cantidad justa de kilos o piezas que se deben encargar. El programa deberá considerar diferentes sucursales, encontrar patrones anuales, ubicación, y otros factores para optimizar la cantidad de producto que se pide utilizando un modelo matemático. 
 
 ---
 
@@ -30,19 +30,19 @@
 
 **El problema:** La falta de control en el inventario y en las compras provoca pérdidas de dinero de dos formas: por un lado, se tiran a la basura productos perecederos (como jamones, quesos o embutidos) porque vencen antes de venderse; por otro lado, se pierden ventas cuando un cliente busca un producto popular y no hay existencia disponible.
 
-**Cómo se resuelve hoy sin el sistema:** El encargado o dueño camina por la bodega y las vitrinas revisando "a ojo" qué se ve vacío, o anota en un cuaderno lo que cree que se venderá durante la semana baselineado únicamente en su intuición y memoria.
+**Cómo se resuelve hoy sin el sistema:** El encargado o dueño camina por la bodega y las vitrinas revisando "a ojo" qué se ve vacío, o anota en un cuaderno lo que cree que se venderá durante la semana únicamente con su intuición y memoria.
 
 **Usuarios del sistema:**
 
 | Tipo de usuario | Qué necesita del sistema | Qué le preocupa |
 |---|---|---|
-| | | |
-| | | |
+|Tiendas de Abarrotes|Calcular cantidad exacta de encargos | Exceso o inventario insuficiente |
+|Tiendas de Embutidos|Calcular cantidad exacta de encargos | Que se eche a perder el producto |
 | | | |
 
 *Instrucción: necesitas al menos dos tipos de usuario con necesidades distintas. Si los dos quieren exactamente lo mismo, probablemente sean el mismo usuario.*
 
-**Un conflicto entre usuarios:**
+**Un conflicto entre usuarios:** Las tiendas de abarrotes normalmente no tienen como preocupación la fecha de caducidad de los productos (o no de todos) entonces no es necesario considerar la caducidad del producto para estimar el encargo.
 
 *Instrucción: describe algo que un usuario quiera y que a otro le estorbe. Ahí está tu primera decisión de diseño real.*
 
