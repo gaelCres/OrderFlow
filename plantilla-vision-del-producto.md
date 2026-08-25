@@ -44,25 +44,21 @@
 
 ### Dentro del alcance
 
-- **Registro y consulta de información de ventas e inventario**, incluyendo las cantidades vendidas y disponibles por producto y sucursal.
+- **Consulta información de ventas e inventario**, incluyendo las cantidades vendidas y disponibles por producto y sucursal.
 
 - **Generación de recomendaciones de compra**, calculando la cantidad sugerida que debe solicitarse para cada producto y sucursal con base en la demanda esperada, inventario disponible y otros factores relevantes. Ej. "Para la sucursal A, del producto X, al proveedor Y, recomiendo comprar 18 kg."
 
 - **Generación de pedidos agrupados por proveedor**, permitiendo transformar las recomendaciones de las diferentes sucursales en una lista de compra para cada proveedor.
 
-- **Consideración de patrones de demanda**, incluyendo factores como comportamiento histórico de ventas, día de la semana y estacionalidad, cuando exista suficiente información disponible.
-
-- **Consideración de características de los productos**, como unidad de venta, presentación, tiempo de entrega del proveedor y, cuando aplique, vida útil o fecha de caducidad.
+- **Consideración de patrones de demanda y características de los productos**, incluyendo factores como comportamiento histórico de ventas, día de la semana y estacionalidad, unidad de venta, presentación, tiempo de entrega del proveedor y, cuando aplique, vida útil o fecha de caducidad.
 
 - **Visualización de información que justifique las recomendaciones de compra**, como demanda estimada, cantidad disponible utilizada para el cálculo, cantidad recomendada y nivel de riesgo de faltante o exceso.
-
-- **Comparación de las recomendaciones del sistema con las decisiones de compra realizadas**, para evaluar posteriormente qué tan efectivas fueron las recomendaciones de OrderFlow.
 
 - **Soporte para múltiples sucursales**, permitiendo que una misma empresa administre y compare la información de diferentes puntos de venta.
 
 ### Explícitamente fuera del alcance
 
-- **Administrar el inventario operativo de la empresa**, incluyendo entradas, salidas, transferencias, ajustes, conteos físicos o movimientos de almacén.
+- **Administrar el inventario operativo de la empresa**, incluyendo entradas, salidas, transferencias, ajustes, conteos físicos o movimientos de almacén. 
 
 - **Sustituir el sistema de punto de venta (POS) de la empresa.** OrderFlow utilizará información de ventas e inventario proporcionada por la empresa o mediante una integración definida posteriormente.
 
@@ -72,14 +68,7 @@
 
 - **Administrar contabilidad, facturación, nómina o finanzas generales de la empresa.**
 
-- **Controlar físicamente el inventario mediante sensores, cámaras, básculas u otros dispositivos de hardware.**
-
-- **Garantizar que una recomendación sea siempre la cantidad exacta que se venderá.** Las recomendaciones serán estimaciones calculadas a partir de datos históricos y condiciones disponibles, por lo que estarán sujetas a incertidumbre.
-
 - **Optimizar automáticamente los precios de venta o realizar promociones.**
-
-- **Desarrollar inicialmente una solución para cualquier tipo de negocio.** El primer alcance estará enfocado en tiendas de abarrotes y establecimientos especializados en alimentos, particularmente productos con demanda variable y, cuando aplique, productos perecederos.
-**Por qué queda fuera:**
 
 *Instrucción: para al menos una de las exclusiones, explica la razón. Puede ser tiempo, complejidad, o que no aporta al problema central.*
 
