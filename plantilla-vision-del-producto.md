@@ -44,8 +44,6 @@
 
 ### Dentro del alcance
 
-- **Gestión de sucursales, productos y proveedores**, permitiendo relacionar qué productos se venden en cada sucursal y qué proveedor puede abastecerlos.
-
 - **Registro y consulta de información de ventas e inventario**, incluyendo las cantidades vendidas y disponibles por producto y sucursal.
 
 - **Generación de recomendaciones de compra**, calculando la cantidad sugerida que debe solicitarse para cada producto y sucursal con base en la demanda esperada, inventario disponible y otros factores relevantes. Ej. "Para la sucursal A, del producto X, al proveedor Y, recomiendo comprar 18 kg."
