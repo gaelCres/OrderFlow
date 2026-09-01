@@ -70,11 +70,12 @@
 
 ## 4. Tipo de sistema y restricciones
 
-**Tipo de sistema:** SaaS / de datos y análisis
+**Tipo de sistema:** 
+SaaS / de datos y análisis
 
 OrderFlow será una aplicación que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
 
-**### Atributos de calidad**
+**Atributos de calidad**
 
 | Atributo | Descripción |
 |---|---|
@@ -84,7 +85,7 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 | **Seguridad** | El acceso a la información debe estar protegido según el tipo de usuario. |
 | **Usabilidad** | Las recomendaciones deben ser fáciles de entender y consultar. |
 
-**### Reglas de negocio iniciales**
+### Reglas de negocio iniciales
 
 1. La recomendación debe considerar la cantidad disponible del producto.
 2. Debe considerar el tiempo de entrega del proveedor.
@@ -92,25 +93,28 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 4. La recomendación se calculará por producto y sucursal.
 5. La cantidad recomendada debe respetar las condiciones de compra del proveedor, como unidad, presentación o pedido mínimo.
 
-**---**
+---
 
 ## 5. Ciclo de vida elegido
 
-**\*\*Modelo elegido:\*\*** Desarrollo incremental e iterativo.
+**Modelo elegido:** Desarrollo incremental e iterativo.
 
-**\*\*Por qué le conviene a este proyecto:\*\*** OrderFlow puede desarrollarse en entregas pequeñas, comenzando con la recepción de datos y generación de recomendaciones básicas, para después incorporar factores como estacionalidad, caducidad y condiciones de proveedores. Los requisitos pueden cambiar conforme se valide el funcionamiento del sistema con los usuarios y el cliente. Además, el equipo puede entregar avances funcionales durante el semestre y recibir retroalimentación de manera continua.
+**Por qué le conviene a este proyecto:**
+OrderFlow puede desarrollarse en entregas pequeñas, comenzando con la recepción de datos y generación de recomendaciones básicas, para después incorporar factores como estacionalidad, caducidad y condiciones de proveedores. Los requisitos pueden cambiar conforme se valide el funcionamiento del sistema con los usuarios y el cliente. Además, el equipo puede entregar avances funcionales durante el semestre y recibir retroalimentación de manera continua.
 
-**### Alternativas descartadas**
+### Alternativas descartadas
 
-**\*\*Alternativa 1: Cascada\*\***
+**Alternativa 1: Cascada**
 
-**\*\*Por qué la descarté:\*\*** Requiere definir gran parte de los requisitos desde el inicio y dificulta realizar cambios cuando se obtiene nueva información del cliente o de las pruebas.
+**Por qué la descarté:** 
+Requiere definir gran parte de los requisitos desde el inicio y dificulta realizar cambios cuando se obtiene nueva información del cliente o de las pruebas.
 
-**\*\*Alternativa 2: Modelo en V\*\***
+**Alternativa 2: Modelo en V**
 
-**\*\*Por qué la descarté:\*\*** Es más rígido y está orientado a proyectos donde los requisitos y las pruebas pueden definirse con mayor precisión desde etapas tempranas, lo cual no corresponde completamente con la naturaleza de OrderFlow.
+**Por qué la descarté:** 
+Es más rígido y está orientado a proyectos donde los requisitos y las pruebas pueden definirse con mayor precisión desde etapas tempranas, lo cual no corresponde completamente con la naturaleza de OrderFlow.
 
-**---**
+---
 
 ## Antes de entregar
 
