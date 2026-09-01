@@ -97,22 +97,21 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 
 ## 5. Ciclo de vida elegido
 
-**Modelo elegido:** Desarrollo incremental e iterativo.
+**Modelo elegido:** 
+Prototipado rápido.
 
-**Por qué le conviene a este proyecto:**
-OrderFlow puede desarrollarse en entregas pequeñas, comenzando con la recepción de datos y generación de recomendaciones básicas, para después incorporar factores como estacionalidad, caducidad y condiciones de proveedores. Los requisitos pueden cambiar conforme se valide el funcionamiento del sistema con los usuarios y el cliente. Además, el equipo puede entregar avances funcionales durante el semestre y recibir retroalimentación de manera continua.
+**Por qué le conviene a este proyecto:** OrderFlow todavía requiere validar algunos requisitos y reglas de negocio con los usuarios y el cliente. El prototipado rápido permite construir una versión inicial del sistema, mostrarla a los usuarios y utilizar su retroalimentación para ajustar las funciones antes de desarrollar la solución completa. Esto reduce el riesgo de construir una solución que no se adapte a las necesidades reales del proceso de compras. Además, el proyecto tiene un tiempo limitado de desarrollo durante el semestre, por lo que permite validar la idea de manera temprana.
 
-### Alternativas descartadas
+**Alternativas descartadas**
 
-**Alternativa 1: Cascada**
+**Alternativa 1: Modelo V**
+
+**\*\*Por qué la descarté:\*\*** Aunque facilita la verificación y validación mediante pruebas asociadas a cada etapa, es más adecuado cuando los requisitos son estables. En OrderFlow todavía pueden surgir cambios a partir de la retroalimentación del cliente y los usuarios.
+
+**Alternativa 2: Espiral**
 
 **Por qué la descarté:** 
-Requiere definir gran parte de los requisitos desde el inicio y dificulta realizar cambios cuando se obtiene nueva información del cliente o de las pruebas.
-
-**Alternativa 2: Modelo en V**
-
-**Por qué la descarté:** 
-Es más rígido y está orientado a proyectos donde los requisitos y las pruebas pueden definirse con mayor precisión desde etapas tempranas, lo cual no corresponde completamente con la naturaleza de OrderFlow.
+Permite gestionar riesgos mediante ciclos iterativos, pero requiere un análisis de riesgos más formal y una mayor complejidad de gestión. Para el tamaño y duración de OrderFlow, sus beneficios no justifican esa complejidad.
 
 ---
 
