@@ -107,8 +107,6 @@ El éxito de OrderFlow se evaluará mediante indicadores que permitan comparar l
 - **Reducción de merma:** disminuir la cantidad de producto que se pierde por caducidad o deterioro.
 - **Reducción de faltantes:** disminuir las ocasiones en que un producto no está disponible cuando existe demanda.
 - **Mejora en las decisiones de compra:** comparar las cantidades recomendadas por OrderFlow con las cantidades que realmente se solicitan.
-- **Nivel de servicio:** aumentar la proporción de demanda que puede ser atendida con producto disponible.
-- **Utilidad de las recomendaciones:** permitir que los usuarios consulten la información utilizada para generar cada recomendación y puedan evaluar si fue adecuada.
 
 El objetivo será demostrar, mediante datos históricos o resultados de operación, que las recomendaciones de OrderFlow pueden contribuir a reducir simultáneamente la merma y los faltantes.
 
