@@ -70,9 +70,9 @@
 
 ## 4. Tipo de sistema y restricciones
 
-**Tipo de sistema:** Web y SaaS, con características de sistema de información y análisis de datos.
+**Tipo de sistema:** SaaS / de datos y análisis
 
-OrderFlow será una aplicación web que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
+OrderFlow será una aplicación que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
 
 **### Atributos de calidad**
 
