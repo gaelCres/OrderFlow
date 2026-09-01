@@ -76,30 +76,31 @@
 
 ## 4. Tipo de sistema y restricciones
 
-*Instrucción: identifica de qué tipo es tu sistema y qué te obliga a garantizar ese tipo. Un sistema de información y un sistema crítico no se diseñan igual.*
+**Tipo de sistema:** Web y SaaS, con características de sistema de información y de datos y análisis.
 
-**Tipo de sistema:**
-
-*(De información · Embebido · Crítico · Web y SaaS · De datos y análisis)*
-
-**Por qué es de ese tipo:**
+**Por qué es de ese tipo:** OrderFlow será una aplicación web utilizada por diferentes usuarios de una empresa para consultar información y generar recomendaciones de compra a partir de datos históricos y operativos. Se considera un sistema Web y SaaS porque estará disponible a través de un navegador y estará diseñado para que una misma plataforma pueda ser utilizada por diferentes sucursales de una empresa. También tiene características de sistema de información y de datos y análisis porque recibe, procesa y presenta información de ventas, existencias, productos, proveedores y comportamiento de la demanda para apoyar la toma de decisiones de compra. Al generar recomendaciones que pueden influir directamente en las cantidades que una empresa compra, el sistema debe proporcionar resultados consistentes, información comprensible y mecanismos que permitan al usuario revisar los datos utilizados para generar cada recomendación.
 
 **Atributos de calidad que impone:**
 
 | Atributo | Por qué importa en mi caso | Qué pasa si no se cumple |
 |---|---|---|
-| | | |
-| | | |
-| | | |
+| **Exactitud** | Las recomendaciones de compra deben calcularse correctamente a partir de los datos disponibles, ya que una cantidad incorrecta puede provocar exceso de producto o faltantes. | Se pueden generar pérdidas económicas por compras innecesarias, merma o ventas perdidas. |
+| **Disponibilidad** | Los responsables de las sucursales y de compras necesitan consultar las recomendaciones cuando realizan sus pedidos. | Si el sistema no está disponible, los usuarios tendrán que volver a realizar las compras mediante métodos manuales. |
+| **Rendimiento** | El sistema debe procesar la información de ventas e inventario y generar las recomendaciones en un tiempo razonable, incluso cuando existan varias sucursales y productos. | Los usuarios pueden tener que esperar demasiado para obtener sus recomendaciones, afectando el proceso de compra. |
+| **Seguridad** | La información de ventas, inventario, proveedores y compras es información interna de la empresa y no debe estar disponible para usuarios no autorizados. | Personas no autorizadas podrían consultar o modificar información sensible de la empresa. |
+| **Usabilidad** | Los usuarios principales pueden ser encargados de sucursal o responsables de compras que no necesariamente tienen conocimientos técnicos. Las recomendaciones deben ser fáciles de interpretar. | Los usuarios podrían interpretar incorrectamente las recomendaciones o preferir continuar utilizando métodos manuales. |
 
 **Reglas de negocio que ya identifiqué:**
 
-*Instrucción: reglas que no son obvias desde fuera y que alguien que conoce el dominio tendría que explicarte. Si no encuentras ninguna, tu caso puede ser demasiado simple.*
+1. **Una recomendación de compra debe considerar la existencia disponible del producto en la sucursal**, ya que la cantidad que se debe solicitar no depende únicamente de la demanda esperada.
 
-1.
-2.
-3.
+2. **La recomendación de compra debe considerar el tiempo de entrega del proveedor**, debido a que un proveedor que tarda varios días en entregar requiere una cantidad diferente a uno que puede surtir el producto rápidamente.
 
+3. **Los productos perecederos deben considerar su vida útil o fecha de caducidad al calcular la cantidad recomendada**, para evitar que se solicite una cantidad que probablemente no pueda venderse antes de que el producto se deteriore o caduque.
+
+4. **La recomendación debe calcularse de manera independiente para cada combinación de producto y sucursal**, ya que un mismo producto puede tener diferentes patrones de demanda dependiendo de la ubicación de la sucursal.
+
+5. **La cantidad recomendada debe respetar las condiciones de compra establecidas por el proveedor**, como unidad de venta, presentación o cantidad mínima de pedido, cuando estas condiciones existan.
 ---
 
 ## 5. Ciclo de vida elegido
