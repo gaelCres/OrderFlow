@@ -76,52 +76,41 @@
 
 ## 4. Tipo de sistema y restricciones
 
-**Tipo de sistema:** Web y SaaS, con características de sistema de información y de datos y análisis.
+**Tipo de sistema:** Web y SaaS, con características de sistema de información y análisis de datos.
 
-**Por qué es de ese tipo:** OrderFlow será una aplicación web utilizada por diferentes usuarios de una empresa para consultar información y generar recomendaciones de compra a partir de datos históricos y operativos. Se considera un sistema Web y SaaS porque estará disponible a través de un navegador y estará diseñado para que una misma plataforma pueda ser utilizada por diferentes sucursales de una empresa. También tiene características de sistema de información y de datos y análisis porque recibe, procesa y presenta información de ventas, existencias, productos, proveedores y comportamiento de la demanda para apoyar la toma de decisiones de compra. Al generar recomendaciones que pueden influir directamente en las cantidades que una empresa compra, el sistema debe proporcionar resultados consistentes, información comprensible y mecanismos que permitan al usuario revisar los datos utilizados para generar cada recomendación.
+OrderFlow será una aplicación web que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
 
-**Atributos de calidad que impone:**
+**### Atributos de calidad**
 
-| Atributo | Por qué importa en mi caso | Qué pasa si no se cumple |
-|---|---|---|
-| **Exactitud** | Las recomendaciones de compra deben calcularse correctamente a partir de los datos disponibles, ya que una cantidad incorrecta puede provocar exceso de producto o faltantes. | Se pueden generar pérdidas económicas por compras innecesarias, merma o ventas perdidas. |
-| **Disponibilidad** | Los responsables de las sucursales y de compras necesitan consultar las recomendaciones cuando realizan sus pedidos. | Si el sistema no está disponible, los usuarios tendrán que volver a realizar las compras mediante métodos manuales. |
-| **Rendimiento** | El sistema debe procesar la información de ventas e inventario y generar las recomendaciones en un tiempo razonable, incluso cuando existan varias sucursales y productos. | Los usuarios pueden tener que esperar demasiado para obtener sus recomendaciones, afectando el proceso de compra. |
-| **Seguridad** | La información de ventas, inventario, proveedores y compras es información interna de la empresa y no debe estar disponible para usuarios no autorizados. | Personas no autorizadas podrían consultar o modificar información sensible de la empresa. |
-| **Usabilidad** | Los usuarios principales pueden ser encargados de sucursal o responsables de compras que no necesariamente tienen conocimientos técnicos. Las recomendaciones deben ser fáciles de interpretar. | Los usuarios podrían interpretar incorrectamente las recomendaciones o preferir continuar utilizando métodos manuales. |
+| Atributo | Descripción |
+|---|---|
+| **Exactitud** | Las recomendaciones deben basarse correctamente en los datos disponibles. |
+| **Disponibilidad** | La información y las recomendaciones deben estar disponibles cuando se necesiten realizar pedidos. |
+| **Rendimiento** | El sistema debe procesar los datos y generar recomendaciones en un tiempo razonable. |
+| **Seguridad** | El acceso a la información debe estar protegido según el tipo de usuario. |
+| **Usabilidad** | Las recomendaciones deben ser fáciles de entender y consultar. |
 
-**Reglas de negocio que ya identifiqué:**
+**### Reglas de negocio iniciales**
 
-1. **Una recomendación de compra debe considerar la existencia disponible del producto en la sucursal**, ya que la cantidad que se debe solicitar no depende únicamente de la demanda esperada.
+1. La recomendación debe considerar la cantidad disponible del producto.
+2. Debe considerar el tiempo de entrega del proveedor.
+3. Para productos perecederos, debe considerar su vida útil o caducidad.
+4. La recomendación se calculará por producto y sucursal.
+5. La cantidad recomendada debe respetar las condiciones de compra del proveedor, como unidad, presentación o pedido mínimo.
 
-2. **La recomendación de compra debe considerar el tiempo de entrega del proveedor**, debido a que un proveedor que tarda varios días en entregar requiere una cantidad diferente a uno que puede surtir el producto rápidamente.
+**---**
 
-3. **Los productos perecederos deben considerar su vida útil o fecha de caducidad al calcular la cantidad recomendada**, para evitar que se solicite una cantidad que probablemente no pueda venderse antes de que el producto se deteriore o caduque.
+## 5. Criterios de éxito
 
-4. **La recomendación debe calcularse de manera independiente para cada combinación de producto y sucursal**, ya que un mismo producto puede tener diferentes patrones de demanda dependiendo de la ubicación de la sucursal.
+El éxito de OrderFlow se evaluará mediante indicadores que permitan comparar las recomendaciones del sistema con los resultados reales de las compras.
 
-5. **La cantidad recomendada debe respetar las condiciones de compra establecidas por el proveedor**, como unidad de venta, presentación o cantidad mínima de pedido, cuando estas condiciones existan.
----
+- **Reducción de merma:** disminuir la cantidad de producto que se pierde por caducidad o deterioro.
+- **Reducción de faltantes:** disminuir las ocasiones en que un producto no está disponible cuando existe demanda.
+- **Mejora en las decisiones de compra:** comparar las cantidades recomendadas por OrderFlow con las cantidades que realmente se solicitan.
+- **Nivel de servicio:** aumentar la proporción de demanda que puede ser atendida con producto disponible.
+- **Utilidad de las recomendaciones:** permitir que los usuarios consulten la información utilizada para generar cada recomendación y puedan evaluar si fue adecuada.
 
-## 5. Ciclo de vida elegido
-
-*Instrucción: este apartado se trabaja en la semana 3, después de ver los modelos de desarrollo. La justificación pesa más que la elección: no hay un modelo correcto, hay uno defendible para tu caso.*
-
-**Modelo elegido:**
-
-**Por qué le conviene a este proyecto:**
-
-*Instrucción: argumenta con las características reales de tu caso. Estabilidad de los requisitos, disponibilidad del cliente, nivel de riesgo, tamaño del equipo, frecuencia de entregas esperada.*
-
-### Alternativas descartadas
-
-**Alternativa 1:**
-
-*Por qué la descarté:*
-
-**Alternativa 2:**
-
-*Por qué la descarté:*
+El objetivo será demostrar, mediante datos históricos o resultados de operación, que las recomendaciones de OrderFlow pueden contribuir a reducir simultáneamente la merma y los faltantes.
 
 ---
 
