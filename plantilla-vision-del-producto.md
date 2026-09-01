@@ -100,18 +100,19 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 **Modelo elegido:** 
 Prototipado rápido.
 
-**Por qué le conviene a este proyecto:** OrderFlow todavía requiere validar algunos requisitos y reglas de negocio con los usuarios y el cliente. El prototipado rápido permite construir una versión inicial del sistema, mostrarla a los usuarios y utilizar su retroalimentación para ajustar las funciones antes de desarrollar la solución completa. Esto reduce el riesgo de construir una solución que no se adapte a las necesidades reales del proceso de compras. Además, el proyecto tiene un tiempo limitado de desarrollo durante el semestre, por lo que permite validar la idea de manera temprana.
+**Por qué le conviene a este proyecto:** OrderFlow todavía requiere validar algunos requisitos y reglas de negocio con los usuarios y el cliente. El prototipado rápido permite construir una versión inicial del sistema, mostrarla a los usuarios y utilizar su retroalimentación para ajustar las funciones antes de desarrollar la solución completa. Esto reduce el riesgo de construir una solución que no se adapte a las necesidades reales del proceso de compras.
 
 **Alternativas descartadas**
 
 **Alternativa 1: Modelo V**
 
-**\*\*Por qué la descarté:\*\*** Aunque facilita la verificación y validación mediante pruebas asociadas a cada etapa, es más adecuado cuando los requisitos son estables. En OrderFlow todavía pueden surgir cambios a partir de la retroalimentación del cliente y los usuarios.
+**Por qué la descarté:** 
+Aunque facilita la verificación y validación mediante pruebas asociadas a cada etapa, es más adecuado cuando los requisitos son estables. En OrderFlow todavía pueden surgir cambios a partir de la retroalimentación del cliente y los usuarios.
 
 **Alternativa 2: Espiral**
 
 **Por qué la descarté:** 
-Permite gestionar riesgos mediante ciclos iterativos, pero requiere un análisis de riesgos más formal y una mayor complejidad de gestión. Para el tamaño y duración de OrderFlow, sus beneficios no justifican esa complejidad.
+Permite gestionar riesgos mediante ciclos iterativos, pero requiere un análisis de riesgos más formal y una mayor complejidad de gestión. 
 
 ---
 
