@@ -94,17 +94,23 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 
 **---**
 
-## 5. Criterios de éxito
+## 5. Ciclo de vida elegido
 
-El éxito de OrderFlow se evaluará mediante indicadores que permitan comparar las recomendaciones del sistema con los resultados reales de las compras.
+**\*\*Modelo elegido:\*\*** Desarrollo incremental e iterativo.
 
-- **Reducción de merma:** disminuir la cantidad de producto que se pierde por caducidad o deterioro.
-- **Reducción de faltantes:** disminuir las ocasiones en que un producto no está disponible cuando existe demanda.
-- **Mejora en las decisiones de compra:** comparar las cantidades recomendadas por OrderFlow con las cantidades que realmente se solicitan.
+**\*\*Por qué le conviene a este proyecto:\*\*** OrderFlow puede desarrollarse en entregas pequeñas, comenzando con la recepción de datos y generación de recomendaciones básicas, para después incorporar factores como estacionalidad, caducidad y condiciones de proveedores. Los requisitos pueden cambiar conforme se valide el funcionamiento del sistema con los usuarios y el cliente. Además, el equipo puede entregar avances funcionales durante el semestre y recibir retroalimentación de manera continua.
 
-El objetivo será demostrar, mediante datos históricos o resultados de operación, que las recomendaciones de OrderFlow pueden contribuir a reducir simultáneamente la merma y los faltantes.
+**### Alternativas descartadas**
 
----
+**\*\*Alternativa 1: Cascada\*\***
+
+**\*\*Por qué la descarté:\*\*** Requiere definir gran parte de los requisitos desde el inicio y dificulta realizar cambios cuando se obtiene nueva información del cliente o de las pruebas.
+
+**\*\*Alternativa 2: Modelo en V\*\***
+
+**\*\*Por qué la descarté:\*\*** Es más rígido y está orientado a proyectos donde los requisitos y las pruebas pueden definirse con mayor precisión desde etapas tempranas, lo cual no corresponde completamente con la naturaleza de OrderFlow.
+
+**---**
 
 ## Antes de entregar
 
