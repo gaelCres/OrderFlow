@@ -26,11 +26,10 @@
 
 | Tipo de usuario | Qué necesita del sistema | Qué le preocupa |
 |---|---|---|
-| **Encargado de sucursal** | Conocer cuánto producto debe solicitar para su sucursal y consultar las recomendaciones de compra. | Quedarse sin productos importantes o acumular mercancía que no se venda. |
-| **Responsable de compras** | Obtener una lista consolidada de productos que deben solicitarse a cada proveedor considerando todas las sucursales. | Comprar cantidades incorrectas, generar exceso de inventario o no cubrir la demanda de las sucursales. |
-| **Administrador o dueño** | Consultar el comportamiento de ventas, inventario, faltantes y merma de las sucursales para evaluar el desempeño de las compras. | Perder dinero por inventario excesivo, merma o ventas perdidas y no tener visibilidad de la operación. |
+| **Dueño de una tienda de abarrotes** | Conocer cuánto producto debe solicitar para su sucursal y consultar las recomendaciones de compra. | Quedarse sin productos importantes o acumular mercancía que no se venda. |
+| **Dueño de cadena de tiendas de embutidos** | Obtener una lista consolidada de productos que deben solicitarse a cada proveedor considerando todas las sucursales. | Comprar cantidades incorrectas, generar exceso de inventario o no cubrir la demanda de las sucursales. |
 
-**Un conflicto entre usuarios:** El encargado de una sucursal puede preferir solicitar una cantidad mayor de producto para reducir el riesgo de quedarse sin mercancía durante el periodo de venta. En cambio, el responsable de compras puede buscar mantener los pedidos lo más ajustados posible para evitar exceso de inventario, costos innecesarios y, en productos perecederos, merma por caducidad. OrderFlow deberá buscar un equilibrio entre ambas necesidades mediante recomendaciones basadas en datos, en lugar de depender únicamente de la intuición de alguno de los usuarios.
+**Un conflicto entre usuarios:** El encargado de una tienda de abarrotes tiene como prioridad mantener suficiente producto disponible para evitar desabastos. Por otro lado, en una tienda de embutidos existe la preocupación de comprar producto en exceso, ya que es necesario considerar la fecha de caducidad de la mayoría de los productos.
 
 ---
 
