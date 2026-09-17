@@ -1,11 +1,5 @@
 # Visión del producto
 
-> **Plantilla del curso · Ingeniería de Software I · SIS3407**
-> Este documento es el primer entregable del semestre y la base de todo lo que viene después.
-> Se entrega completo en la **semana 4** y se presenta ante el grupo.
->
-> **Cómo usarla:** copia este archivo a tu repositorio como `docs/vision-del-producto.md`, borra las instrucciones en gris de cada apartado y escribe tu contenido en su lugar. Conserva los títulos.
-
 ---
 
 **Autor:** Gael Crespo Maceiras  
@@ -32,11 +26,10 @@
 
 | Tipo de usuario | Qué necesita del sistema | Qué le preocupa |
 |---|---|---|
-| **Encargado de sucursal** | Conocer cuánto producto debe solicitar para su sucursal y consultar las recomendaciones de compra. | Quedarse sin productos importantes o acumular mercancía que no se venda. |
-| **Responsable de compras** | Obtener una lista consolidada de productos que deben solicitarse a cada proveedor considerando todas las sucursales. | Comprar cantidades incorrectas, generar exceso de inventario o no cubrir la demanda de las sucursales. |
-| **Administrador o dueño** | Consultar el comportamiento de ventas, inventario, faltantes y merma de las sucursales para evaluar el desempeño de las compras. | Perder dinero por inventario excesivo, merma o ventas perdidas y no tener visibilidad de la operación. |
+| **Dueño de una tienda de abarrotes** | Conocer cuánto producto debe solicitar para su sucursal y consultar las recomendaciones de compra. | Quedarse sin productos importantes o acumular mercancía que no se venda. |
+| **Dueño de cadena de tiendas de embutidos** | Obtener una lista consolidada de productos que deben solicitarse a cada proveedor considerando todas las sucursales. | Comprar cantidades incorrectas, generar exceso de inventario o no cubrir la demanda de las sucursales. |
 
-**Un conflicto entre usuarios:** El encargado de una sucursal puede preferir solicitar una cantidad mayor de producto para reducir el riesgo de quedarse sin mercancía durante el periodo de venta. En cambio, el responsable de compras puede buscar mantener los pedidos lo más ajustados posible para evitar exceso de inventario, costos innecesarios y, en productos perecederos, merma por caducidad. OrderFlow deberá buscar un equilibrio entre ambas necesidades mediante recomendaciones basadas en datos, en lugar de depender únicamente de la intuición de alguno de los usuarios.
+**Un conflicto entre usuarios:** El encargado de una tienda de abarrotes tiene como prioridad mantener suficiente producto disponible para evitar desabastos. Por otro lado, en una tienda de embutidos existe la preocupación de comprar producto en exceso, ya que es necesario considerar la fecha de caducidad de la mayoría de los productos.
 
 ---
 
@@ -76,11 +69,16 @@
 
 ## 4. Tipo de sistema y restricciones
 
+<<<<<<< HEAD
 **Tipo de sistema:** SaaS / de datos y análisis
+=======
+**Tipo de sistema:** 
+SaaS / de datos y análisis
+>>>>>>> 91da91defe581c36200cf31ae0e837849bdcff52
 
 OrderFlow será una aplicación que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
 
-**### Atributos de calidad**
+**Atributos de calidad**
 
 | Atributo | Descripción |
 |---|---|
@@ -90,7 +88,7 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 | **Seguridad** | El acceso a la información debe estar protegido según el tipo de usuario. |
 | **Usabilidad** | Las recomendaciones deben ser fáciles de entender y consultar. |
 
-**### Reglas de negocio iniciales**
+### Reglas de negocio iniciales
 
 1. La recomendación debe considerar la cantidad disponible del producto.
 2. Debe considerar el tiempo de entrega del proveedor.
@@ -98,19 +96,26 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 4. La recomendación se calculará por producto y sucursal.
 5. La cantidad recomendada debe respetar las condiciones de compra del proveedor, como unidad, presentación o pedido mínimo.
 
-**---**
+---
 
-## 5. Criterios de éxito
+## 5. Ciclo de vida elegido
 
-El éxito de OrderFlow se evaluará mediante indicadores que permitan comparar las recomendaciones del sistema con los resultados reales de las compras.
+**Modelo elegido:** 
+Prototipado rápido.
 
-- **Reducción de merma:** disminuir la cantidad de producto que se pierde por caducidad o deterioro.
-- **Reducción de faltantes:** disminuir las ocasiones en que un producto no está disponible cuando existe demanda.
-- **Mejora en las decisiones de compra:** comparar las cantidades recomendadas por OrderFlow con las cantidades que realmente se solicitan.
-- **Nivel de servicio:** aumentar la proporción de demanda que puede ser atendida con producto disponible.
-- **Utilidad de las recomendaciones:** permitir que los usuarios consulten la información utilizada para generar cada recomendación y puedan evaluar si fue adecuada.
+**Por qué le conviene a este proyecto:** OrderFlow todavía requiere validar algunos requisitos y reglas de negocio con los usuarios y el cliente. El prototipado rápido permite construir una versión inicial del sistema, mostrarla a los usuarios y utilizar su retroalimentación para ajustar las funciones antes de desarrollar la solución completa. Esto reduce el riesgo de construir una solución que no se adapte a las necesidades reales del proceso de compras.
 
-El objetivo será demostrar, mediante datos históricos o resultados de operación, que las recomendaciones de OrderFlow pueden contribuir a reducir simultáneamente la merma y los faltantes.
+**Alternativas descartadas**
+
+**Alternativa 1: Modelo V**
+
+**Por qué la descarté:** 
+Aunque facilita la verificación y validación mediante pruebas asociadas a cada etapa, es más adecuado cuando los requisitos son estables. En OrderFlow todavía pueden surgir cambios a partir de la retroalimentación del cliente y los usuarios.
+
+**Alternativa 2: Espiral**
+
+**Por qué la descarté:** 
+Permite gestionar riesgos mediante ciclos iterativos, pero requiere un análisis de riesgos más formal y una mayor complejidad de gestión. 
 
 ---
 
