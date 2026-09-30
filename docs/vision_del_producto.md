@@ -69,12 +69,8 @@
 
 ## 4. Tipo de sistema y restricciones
 
-<<<<<<< HEAD
-**Tipo de sistema:** SaaS / de datos y análisis
-=======
 **Tipo de sistema:** 
 SaaS / de datos y análisis
->>>>>>> 91da91defe581c36200cf31ae0e837849bdcff52
 
 OrderFlow será una aplicación que recibe y analiza información de ventas, existencias, productos y proveedores para generar recomendaciones de compra. El sistema deberá mostrar resultados claros y consistentes para apoyar la toma de decisiones.
 
@@ -123,13 +119,13 @@ Permite gestionar riesgos mediante ciclos iterativos, pero requiere un análisis
 
 Reviso que el documento cumpla lo siguiente:
 
-- [ ] La descripción del apartado 1 se entiende sin ser del área
-- [ ] Hay al menos dos tipos de usuario con necesidades distintas
-- [ ] Identifiqué un conflicto real entre usuarios
-- [ ] El alcance dice qué queda fuera, no solo qué queda dentro
-- [ ] Las exclusiones son específicas, no genéricas
-- [ ] Identifiqué el tipo de sistema y al menos dos atributos de calidad
-- [ ] Anoté al menos tres reglas de negocio no obvias
-- [ ] Justifiqué el ciclo de vida contra dos alternativas descartadas
-- [ ] El documento está en mi repositorio y se puede leer desde el navegador
-- [ ] Borré todas las instrucciones en cursiva de la plantilla
+- [x] La descripción del apartado 1 se entiende sin ser del área
+- [x] Hay al menos dos tipos de usuario con necesidades distintas
+- [x] Identifiqué un conflicto real entre usuarios
+- [x] El alcance dice qué queda fuera, no solo qué queda dentro
+- [x] Las exclusiones son específicas, no genéricas
+- [x] Identifiqué el tipo de sistema y al menos dos atributos de calidad
+- [x] Anoté al menos tres reglas de negocio no obvias
+- [x] Justifiqué el ciclo de vida contra dos alternativas descartadas
+- [x] El documento está en mi repositorio y se puede leer desde el navegador
+- [x] Borré todas las instrucciones en cursiva de la plantilla

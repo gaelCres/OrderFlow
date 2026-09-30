@@ -2,8 +2,8 @@
 
 **Sistema:** OrderFlow
 **Autor:** Gael Crespo Maceiras
-**Versión:** 1.0
-**Fecha de la última actualización:** 17/09/2026
+**Versión:** 1.1
+**Fecha de la última actualización:** 22/09/2026
 
 ---
 
@@ -43,29 +43,31 @@ La administración operativa del inventario queda fuera del alcance porque Order
 
 El responsable de una sucursal puede priorizar mantener suficiente inventario para reducir el riesgo de faltantes, mientras que el responsable de una cadena puede priorizar evitar compras excesivas, especialmente en productos perecederos. OrderFlow debe mostrar información sobre el riesgo de faltante o exceso para que el usuario pueda evaluar la recomendación antes de realizar el pedido.
 
+Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde surgió como una preocupación plausible que depende del producto y del momento.
+
 ---
 
 ## 3. Requisitos funcionales
 
 ### 3.1 Resumen
 
-| ID     | Nombre                                       | Prioridad      | Origen                                              |
-| ------ | -------------------------------------------- | -------------- | --------------------------------------------------- |
-| RF-001 | Consulta de ventas                           | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-002 | Consulta de inventario                       | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-003 | Consulta de información de productos         | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-004 | Consulta de información de proveedores       | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-005 | Consulta de información por sucursal         | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-006 | Cálculo de demanda esperada                  | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-007 | Generación de recomendación de compra        | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-008 | Consideración del tiempo de entrega          | Imprescindible | Regla de negocio de la Visión, 18 de agosto de 2026 |
-| RF-009 | Consideración de caducidad                   | Importante     | Regla de negocio de la Visión, 18 de agosto de 2026 |
-| RF-010 | Aplicación de condiciones de compra          | Imprescindible | Regla de negocio de la Visión, 18 de agosto de 2026 |
-| RF-011 | Visualización de justificación               | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-012 | Visualización de riesgo                      | Importante     | Visión del producto, 18 de agosto de 2026           |
-| RF-013 | Generación de pedidos por proveedor          | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-014 | Consulta de recomendaciones por sucursal     | Imprescindible | Visión del producto, 18 de agosto de 2026           |
-| RF-015 | Consulta consolidada de múltiples sucursales | Importante     | Visión del producto, 18 de agosto de 2026           |
+| ID     | Nombre                                       | Prioridad      | Origen                                                                     |
+| ------ | --------------------------------------------- | -------------- | ---------------------------------------------------------------------------- |
+| RF-001 | Consulta de ventas                           | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-002 | Consulta de inventario                       | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-003 | Consulta de información de productos         | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-004 | Consulta de información de proveedores       | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-005 | Consulta de información por sucursal         | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-006 | Cálculo de demanda esperada                  | Imprescindible | Visión del producto, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
+| RF-007 | Generación de recomendación de compra        | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-008 | Consideración del tiempo de entrega          | Imprescindible | Regla de negocio de la Visión, 18 de agosto de 2026                         |
+| RF-009 | Consideración de caducidad                   | Importante     | Regla de negocio de la Visión, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
+| RF-010 | Aplicación de condiciones de compra          | Imprescindible | Regla de negocio de la Visión, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
+| RF-011 | Visualización de justificación               | Imprescindible | Visión del producto, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
+| RF-012 | Visualización de riesgo                      | Importante     | Visión del producto, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
+| RF-013 | Generación de pedidos por proveedor          | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-014 | Consulta de recomendaciones por sucursal     | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-015 | Consulta consolidada de múltiples sucursales | Importante     | Visión del producto, 18 de agosto de 2026                                   |
 
 ### 3.2 Fichas
 
@@ -124,7 +126,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 | Campo                      | Contenido                                                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema calcula la demanda esperada de un producto para una sucursal utilizando información histórica de ventas disponible.                                        |
-| **Origen**                 | Visión del producto, 18 de agosto de 2026; derivado de la descripción del cálculo de recomendaciones.                                                                 |
+| **Origen**                 | Visión del producto, 18 de agosto de 2026; derivado de la descripción del cálculo de recomendaciones. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real. |
 | **Prioridad**              | Imprescindible                                                                                                                                                        |
 | **Criterio de aceptación** | Al existir información histórica suficiente para un producto y sucursal, el sistema calcula y muestra una demanda esperada para el periodo de compra correspondiente. |
 | **Relacionado con**        | RF-001, RF-007, RF-011                                                                                                                                                |
@@ -154,7 +156,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 | Campo                      | Contenido                                                                                                                                                                             |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema considera la vida útil o fecha de caducidad registrada al generar la recomendación de productos perecederos.                                                               |
-| **Origen**                 | Regla de negocio de la Visión del producto, 18 de agosto de 2026.                                                                                                                     |
+| **Origen**                 | Regla de negocio de la Visión del producto, 18 de agosto de 2026. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real ligada a productos perecederos.       |
 | **Prioridad**              | Importante                                                                                                                                                                            |
 | **Criterio de aceptación** | Al generar una recomendación para un producto identificado como perecedero y con información de vida útil o caducidad disponible, el sistema utiliza dicha información en el cálculo. |
 | **Relacionado con**        | RF-003, RF-007, RF-012                                                                                                                                                                |
@@ -164,7 +166,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 | Campo                      | Contenido                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema ajusta la cantidad recomendada a las condiciones de compra registradas del proveedor.                                                        |
-| **Origen**                 | Regla de negocio de la Visión del producto, 18 de agosto de 2026.                                                                                       |
+| **Origen**                 | Regla de negocio de la Visión del producto, 18 de agosto de 2026. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real ligada a condiciones de proveedores. |
 | **Prioridad**              | Imprescindible                                                                                                                                          |
 | **Criterio de aceptación** | Al existir una presentación, unidad de venta o pedido mínimo registrado para el producto, la cantidad recomendada respeta la condición correspondiente. |
 | **Relacionado con**        | RF-003, RF-004, RF-007                                                                                                                                  |
@@ -174,7 +176,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 | Campo                      | Contenido                                                                                                                                                     |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema muestra los datos utilizados para justificar una recomendación de compra.                                                                          |
-| **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                    |
+| **Origen**                 | Visión del producto, 18 de agosto de 2026. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real.                                    |
 | **Prioridad**              | Imprescindible                                                                                                                                                |
 | **Criterio de aceptación** | Al consultar una recomendación, el sistema muestra como mínimo la demanda estimada, la cantidad disponible utilizada en el cálculo y la cantidad recomendada. |
 | **Relacionado con**        | RF-002, RF-006, RF-007                                                                                                                                        |
@@ -182,9 +184,9 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 #### RF-012 · Visualización de riesgo
 
 | Campo                      | Contenido                                                                                                                                                 |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema muestra el nivel de riesgo de faltante o exceso asociado a una recomendación de compra.                                                        |
-| **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                |
+| **Origen**                 | Visión del producto, 18 de agosto de 2026. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real.                                |
 | **Prioridad**              | Importante                                                                                                                                                |
 | **Criterio de aceptación** | Al consultar una recomendación, el sistema muestra un nivel de riesgo de faltante o exceso cuando los datos necesarios para calcularlo están disponibles. |
 | **Relacionado con**        | RF-007, RF-009, RF-011                                                                                                                                    |
@@ -212,7 +214,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 #### RF-015 · Consulta consolidada de múltiples sucursales
 
 | Campo                      | Contenido                                                                                                                                                       |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema muestra de forma consolidada las recomendaciones de compra correspondientes a múltiples sucursales de una misma empresa.                             |
 | **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                      |
 | **Prioridad**              | Importante                                                                                                                                                      |
@@ -226,27 +228,27 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 ### 4.1 Resumen
 
 | ID          | Atributo       | Nombre                                   | Prioridad      | Origen                                       |
-| ----------- | -------------- | ---------------------------------------- | -------------- | -------------------------------------------- |
-| RNF-REN-001 | Rendimiento    | Tiempo de generación de recomendaciones  | Imprescindible | Derivado del tipo de sistema                 |
-| RNF-REN-002 | Rendimiento    | Tiempo de consulta de recomendaciones    | Importante     | Derivado del tipo de sistema                 |
-| RNF-SEG-001 | Seguridad      | Protección del acceso                    | Imprescindible | Supuesto propio derivado del tipo de sistema |
-| RNF-SEG-002 | Seguridad      | Separación de información entre empresas | Imprescindible | Supuesto propio derivado del modelo SaaS     |
-| RNF-USA-001 | Usabilidad     | Identificación de recomendaciones        | Imprescindible | Derivado del objetivo del sistema            |
-| RNF-USA-002 | Usabilidad     | Comprensión de la justificación          | Imprescindible | Visión del producto, 18 de agosto de 2026    |
-| RNF-CON-001 | Confiabilidad  | Consistencia de las recomendaciones      | Imprescindible | Derivado del tipo de sistema                 |
-| RNF-MAN-001 | Mantenibilidad | Modificación de reglas de cálculo        | Importante     | Supuesto propio derivado del tipo de sistema |
-| RNF-ESC-001 | Escalabilidad  | Soporte de múltiples sucursales          | Importante     | Visión del producto, 18 de agosto de 2026    |
+| ----------- | -------------- | ----------------------------------------- | -------------- | ---------------------------------------------- |
+| RNF-REN-001 | Rendimiento    | Tiempo de generación de recomendaciones  | Imprescindible | Derivado del tipo de sistema                   |
+| RNF-REN-002 | Rendimiento    | Tiempo de consulta de recomendaciones    | Importante     | Derivado del tipo de sistema                   |
+| RNF-SEG-001 | Seguridad      | Protección del acceso                    | Imprescindible | Supuesto propio derivado del tipo de sistema   |
+| RNF-SEG-002 | Seguridad      | Separación de información entre empresas | Imprescindible | Supuesto propio derivado del modelo SaaS       |
+| RNF-USA-001 | Usabilidad     | Identificación de recomendaciones        | Imprescindible | Derivado del objetivo del sistema              |
+| RNF-USA-002 | Usabilidad     | Comprensión de la justificación          | Imprescindible | Visión del producto, 18 de agosto de 2026      |
+| RNF-CON-001 | Confiabilidad  | Consistencia de las recomendaciones      | Imprescindible | Derivado del tipo de sistema                   |
+| RNF-MAN-001 | Mantenibilidad | Modificación de reglas de cálculo        | Importante     | Supuesto propio derivado del tipo de sistema   |
+| RNF-ESC-001 | Escalabilidad  | Soporte de múltiples sucursales          | Importante     | Visión del producto, 18 de agosto de 2026      |
 
 ### 4.2 Fichas
 
 #### RNF-REN-001 · Tiempo de generación de recomendaciones
 
 | Campo                   | Contenido                                                                                                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Rendimiento                                                                                                                                                                      |
 | **Descripción**         | El sistema genera las recomendaciones de compra de una sucursal en menos de 10 segundos cuando procesa hasta 10,000 registros de ventas históricos.                              |
 | **Métrica**             | Tiempo transcurrido entre la solicitud de generación y la disponibilidad de todas las recomendaciones, medido con hasta 10,000 registros de ventas históricos para una sucursal. |
-| **Origen**              | Derivado del tipo de sistema: OrderFlow procesa datos para apoyar decisiones de compra durante la planeación de pedidos. El límite es un supuesto propio sujeto a validación.    |
+| **Origen**              | Derivado del tipo de sistema. El límite es un supuesto propio sujeto a validación.                                                                                              |
 | **Prioridad**           | Imprescindible                                                                                                                                                                   |
 | **Por qué importa**     | Una generación demasiado lenta dificulta consultar las recomendaciones durante el proceso de planeación de compras.                                                              |
 | **Afecta a**            | RF-006, RF-007, RF-012                                                                                                                                                           |
@@ -278,11 +280,11 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 #### RNF-SEG-002 · Separación de información entre empresas
 
 | Campo                   | Contenido                                                                                                                                                                              |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Seguridad                                                                                                                                                                              |
 | **Descripción**         | El sistema impide que un usuario consulte información perteneciente a una empresa distinta de aquella a la que está asociado.                                                          |
 | **Métrica**             | En el 100 % de las pruebas realizadas con dos empresas independientes, un usuario de una empresa no debe visualizar ventas, inventario, recomendaciones ni pedidos de la otra empresa. |
-| **Origen**              | Supuesto propio derivado del modelo SaaS y del soporte para diferentes empresas. Su aplicación debe validarse con el cliente.                                                          |
+| **Origen**              | Supuesto propio derivado del modelo SaaS y del soporte para diferentes empresas. Un ejercicio de elicitación (22/09/2026) planteó además una pregunta abierta, no cubierta por este supuesto: si un encargado de sucursal debería ver información de otras sucursales de la misma empresa. |
 | **Prioridad**           | Imprescindible                                                                                                                                                                         |
 | **Por qué importa**     | La exposición de información de una empresa a otra afectaría la confidencialidad de sus datos comerciales.                                                                             |
 | **Afecta a**            | RF-001, RF-002, RF-005, RF-007, RF-013, RF-015                                                                                                                                         |
@@ -302,7 +304,7 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 #### RNF-USA-002 · Comprensión de la justificación
 
 | Campo                   | Contenido                                                                                                                                                                              |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Usabilidad                                                                                                                                                                             |
 | **Descripción**         | El sistema presenta la información utilizada para justificar una recomendación en una misma vista de consulta.                                                                         |
 | **Métrica**             | En el 100 % de las recomendaciones consultadas, la demanda estimada, el inventario utilizado y la cantidad recomendada deben poder consultarse sin navegar a otra sección del sistema. |
@@ -340,9 +342,9 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 | Campo                   | Contenido                                                                                                                                                                                        |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Atributo de calidad** | Escalabilidad                                                                                                                                                                                    |
-| **Descripción**         | El sistema procesa información de al menos 50 sucursales pertenecientes a una misma empresa sin impedir la generación de recomendaciones.                                                        |
-| **Métrica**             | Una ejecución que incluya datos de 50 sucursales debe completar la generación de recomendaciones sin errores funcionales y producir resultados para todas las sucursales con información válida. |
-| **Origen**              | Visión del producto, 18 de agosto de 2026. La cantidad de 50 sucursales es un supuesto propio sujeto a validación.                                                                               |
+| **Descripción**         | El sistema procesa información de al menos 15 sucursales pertenecientes a una misma empresa sin impedir la generación de recomendaciones.                                                        |
+| **Métrica**             | Una ejecución que incluya datos de 15 sucursales debe completar la generación de recomendaciones sin errores funcionales y producir resultados para todas las sucursales con información válida. |
+| **Origen**              | Visión del producto, 18 de agosto de 2026. Cifra ajustada de 50 a 15 sucursales tras un ejercicio de elicitación, 22/09/2026, para mantener un margen de crecimiento razonable; sigue siendo un supuesto propio sujeto a validación. |
 | **Prioridad**           | Importante                                                                                                                                                                                       |
 | **Por qué importa**     | OrderFlow debe ser útil para cadenas con múltiples puntos de venta y no limitarse a una sola sucursal.                                                                                           |
 | **Afecta a**            | RF-005, RF-007, RF-013, RF-014, RF-015                                                                                                                                                           |
@@ -351,7 +353,18 @@ El responsable de una sucursal puede priorizar mantener suficiente inventario pa
 
 ## 5. Casos de uso
 
-Los casos de uso se definirán y detallarán después de la entrevista de elicitación. De manera preliminar, los requisitos funcionales identificados se agrupan en los siguientes casos de uso:
+### 5.1 Actores
+
+Identificados a partir de un ejercicio de elicitación (22/09/2026), agrupando por rol y no por persona:
+
+| Actor | Descripción |
+|---|---|
+| **Responsable de sucursal** | Dueño de una tienda de abarrotes independiente o encargado de una sucursal dentro de una cadena. Consulta ventas, inventario y recomendaciones de su propia sucursal. |
+| **Responsable de compras de la cadena** | Dueño o encargado que consolida varias sucursales. Consulta recomendaciones de múltiples sucursales y genera pedidos agrupados por proveedor. |
+
+### 5.2 Lista de casos de uso
+
+Confirmados tras el ejercicio de elicitación del 22/09/2026:
 
 | ID    | Caso de uso                                      | Requisitos relacionados                |
 | ----- | ------------------------------------------------ | -------------------------------------- |
@@ -362,12 +375,26 @@ Los casos de uso se definirán y detallarán después de la entrevista de elicit
 | CU-05 | Generar pedidos agrupados por proveedor          | RF-013, RF-015                         |
 | CU-06 | Consultar información consolidada de sucursales  | RF-005, RF-014, RF-015                 |
 
+No se identificaron requisitos sin caso de uso asociado ni casos de uso sin requisitos detrás.
+
+### 5.3 Caso de uso detallado: CU-03 · Generar recomendación de compra
+
+| Campo | Contenido |
+|---|---|
+| **Actor principal** | Responsable de sucursal |
+| **Objetivo** | Obtener la cantidad recomendada a pedir de un producto para su sucursal, lista para incluirse en el pedido al proveedor. |
+| **Precondición** | El producto y la sucursal tienen información de ventas, inventario y proveedor registrada. |
+| **Escenario principal** | 1. El responsable de sucursal selecciona la sucursal y el producto para el que quiere una recomendación. 2. El sistema recupera el historial de ventas del producto en esa sucursal y calcula la demanda esperada, considerando patrones históricos, día de la semana y estacionalidad. 3. El sistema recupera la cantidad de inventario disponible del producto en la sucursal. 4. El sistema recupera las características del producto (unidad de venta, presentación, vida útil si aplica) y las condiciones del proveedor asociado (tiempo de entrega, pedido mínimo). 5. El sistema calcula la cantidad recomendada a partir de la demanda esperada y el inventario disponible, considerando el tiempo de entrega del proveedor y, si el producto es perecedero, su vida útil o caducidad. 6. El sistema ajusta la cantidad para respetar las condiciones de compra del proveedor. 7. El sistema muestra la recomendación con el producto, la sucursal y la cantidad recomendada. |
+| **Flujos alternos** | 3a. No hay dato de inventario disponible para el producto en esa sucursal: el sistema no genera la recomendación y notifica al responsable de sucursal que falta ese dato de entrada.<br>5a. No hay suficiente historial de ventas para calcular una demanda confiable: el sistema genera la recomendación con la información disponible, marcándola como de baja confianza.<br>6a. La cantidad ajustada a las condiciones del proveedor (por ejemplo, redondeada al pedido mínimo) supera de forma notable la demanda esperada: el sistema marca esta diferencia como riesgo de exceso. |
+| **Postcondición** | La recomendación queda generada y disponible para su consulta posterior. |
+| **Requisitos que realiza** | RF-001, RF-002, RF-003, RF-004, RF-006, RF-007, RF-008, RF-009, RF-010. También activa RNF-CON-001 (consistencia) y RNF-REN-001 (tiempo de generación). |
+
 ---
 
 ## 6. Trazabilidad
 
 | Requisito   | Origen                            | Caso de uso                                            | Elemento del prototipo              |
-| ----------- | --------------------------------- | ------------------------------------------------------ | ----------------------------------- |
+| ----------- | --------------------------------- | -------------------------------------------------------- | ------------------------------------ |
 | RF-001      | Visión del producto               | CU-01 Consultar información de ventas e inventario     | Vista de ventas                     |
 | RF-002      | Visión del producto               | CU-01 Consultar información de ventas e inventario     | Vista de inventario                 |
 | RF-003      | Visión del producto               | CU-02 Consultar información de productos y proveedores | Vista de producto                   |
@@ -398,24 +425,11 @@ Los casos de uso se definirán y detallarán después de la entrevista de elicit
 ## 7. Registro de cambios
 
 | Fecha      | Requisito | Qué cambió                                                        | Por qué                                                                  |
-| ---------- | --------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| ---------- | --------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------- |
 | 17/09/2026 | Todos     | Creación de la primera versión de la especificación de requisitos | Elaboración inicial de los requisitos a partir de la Visión del producto |
+| 22/09/2026 | RF-006, RF-009, RF-010, RF-011, RF-012 | Se anotó que estos requisitos fueron explorados en un ejercicio de elicitación | Resultado del ejercicio de elicitación (roleplay), 22/09/2026 |
+| 22/09/2026 | RNF-ESC-001 | Se corrigió la métrica de 50 a 15 sucursales | El ejercicio de elicitación sugirió que la cifra original no tenía base real |
+| 22/09/2026 | RNF-SEG-002 | Se agregó una nota sobre una pregunta abierta: si un encargado de sucursal debería ver información de otras sucursales de la misma empresa | Surgió en el ejercicio de elicitación, no estaba contemplado en el supuesto original |
+| 22/09/2026 | Sección 5 | Se agregaron actores, se confirmaron los seis casos de uso y se redactó completo CU-03 con escenario principal y flujos alternos | Resultado del ejercicio de casos de uso posterior a la elicitación |
 
 ---
-
-## Antes de entregar
-
-* [x] Todos los requisitos tienen identificador único y ninguno está repetido.
-* [x] Cada requisito expresa una sola idea.
-* [x] Cada requisito funcional tiene criterio de aceptación comprobable.
-* [x] Cada requisito no funcional tiene una métrica.
-* [x] El campo Origen distingue lo confirmado de lo supuesto.
-* [x] Se incluyen requisitos de rendimiento, seguridad, usabilidad, confiabilidad, mantenibilidad y escalabilidad.
-* [x] Ningún requisito impone una solución técnica específica.
-* [x] Todos los requisitos se encuentran dentro del alcance declarado.
-* [x] No se identifican contradicciones entre los requisitos.
-* [x] Los requisitos están redactados para reducir interpretaciones ambiguas.
-* [ ] Los requisitos de origen "supuesto propio" fueron validados con el cliente.
-* [ ] La tabla de trazabilidad fue actualizada con los elementos definitivos del prototipo.
-* [ ] La dupla revisó el documento y registró su revisión.
-* [ ] Los casos de uso fueron validados después de la entrevista de elicitación.
