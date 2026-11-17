@@ -2,8 +2,10 @@
 
 ---
 
-**Autor:** Gael Crespo Maceiras  
-**Fecha de la última versión:** 18/08/2026  
+**Autor:** Gael Crespo Maceiras
+
+**Fecha de la última versión:** 17/11/2026
+
 **Repositorio:** https://github.com/gaelCres/OrderFlow
 
 ---
@@ -39,9 +41,9 @@
 
 - **Consulta información de ventas e inventario**, incluyendo las cantidades vendidas y disponibles por producto y sucursal.
 
-- **Generación de recomendaciones de compra**, calculando la cantidad sugerida que debe solicitarse para cada producto y sucursal con base en la demanda esperada, inventario disponible y otros factores relevantes. Ej. "Para la sucursal A, del producto X, al proveedor Y, recomiendo comprar 18 kg."
+- **Generación de recomendaciones de compra**, calculando la cantidad sugerida que debe solicitarse para cada producto y sucursal con base en la demanda esperada, inventario disponible y otros factores relevantes. El usuario puede solicitar el cálculo para un producto o repetirlo para todo el catálogo de la sucursal en una sola solicitud. Ej. "Para la sucursal A, del producto X, al proveedor Y, recomiendo comprar 18 kg."
 
-- **Generación de pedidos agrupados por proveedor**, permitiendo transformar las recomendaciones de las diferentes sucursales en una lista de compra para cada proveedor.
+- **Generación de listas de compra por proveedor**, agrupando recomendaciones seleccionadas e identificando la sucursal de origen de cada partida.
 
 - **Consideración de patrones de demanda y características de los productos**, incluyendo factores como comportamiento histórico de ventas, día de la semana y estacionalidad, unidad de venta, presentación, tiempo de entrega del proveedor y, cuando aplique, vida útil o fecha de caducidad.
 
@@ -63,7 +65,7 @@
 
 - **Optimizar automáticamente los precios de venta o realizar promociones.**
 
-*Instrucción: para al menos una de las exclusiones, explica la razón. Puede ser tiempo, complejidad, o que no aporta al problema central.*
+La administración operativa del inventario queda fuera del alcance porque OrderFlow usa las existencias como insumo para planear compras.
 
 ---
 
@@ -81,7 +83,7 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 | **Exactitud** | Las recomendaciones deben basarse correctamente en los datos disponibles. |
 | **Disponibilidad** | La información y las recomendaciones deben estar disponibles cuando se necesiten realizar pedidos. |
 | **Rendimiento** | El sistema debe procesar los datos y generar recomendaciones en un tiempo razonable. |
-| **Seguridad** | El acceso a la información debe estar protegido según el tipo de usuario. |
+| **Seguridad** | El acceso requiere autenticación y la información de cada empresa se mantiene separada. |
 | **Usabilidad** | Las recomendaciones deben ser fáciles de entender y consultar. |
 
 ### Reglas de negocio iniciales
@@ -90,7 +92,7 @@ OrderFlow será una aplicación que recibe y analiza información de ventas, exi
 2. Debe considerar el tiempo de entrega del proveedor.
 3. Para productos perecederos, debe considerar su vida útil o caducidad.
 4. La recomendación se calculará por producto y sucursal.
-5. La cantidad recomendada debe respetar las condiciones de compra del proveedor, como unidad, presentación o pedido mínimo.
+5. Para necesidades positivas, la cantidad recomendada debe respetar las condiciones configuradas para el producto y el proveedor, como unidad, presentación o pedido mínimo.
 
 ---
 

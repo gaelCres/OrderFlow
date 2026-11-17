@@ -2,8 +2,8 @@
 
 **Sistema:** OrderFlow
 **Autor:** Gael Crespo Maceiras
-**Versión:** 1.1
-**Fecha de la última actualización:** 22/09/2026
+**Versión:** 1.2
+**Fecha de la última actualización:** 17/11/2026
 
 ---
 
@@ -16,6 +16,8 @@ Este documento especifica los requisitos funcionales y no funcionales de OrderFl
 **Alcance del sistema:**
 
 OrderFlow es una aplicación SaaS de datos y análisis que consulta información de ventas, inventario, productos, sucursales y proveedores para generar recomendaciones de compra. El sistema calcula cantidades recomendadas por producto y sucursal considerando la demanda esperada, inventario disponible, comportamiento histórico, estacionalidad, día de la semana, unidad de venta, presentación, tiempo de entrega del proveedor y, cuando corresponda, vida útil o fecha de caducidad.
+
+El usuario puede pedir el cálculo para un producto o para todos los productos de una sucursal. En ambos casos se utiliza el mismo cálculo por producto y sucursal.
 
 El sistema también genera listas de compra agrupadas por proveedor y muestra información que permite al usuario comprender los factores utilizados para generar cada recomendación.
 
@@ -65,7 +67,7 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 | RF-010 | Aplicación de condiciones de compra          | Imprescindible | Regla de negocio de la Visión, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
 | RF-011 | Visualización de justificación               | Imprescindible | Visión del producto, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
 | RF-012 | Visualización de riesgo                      | Importante     | Visión del producto, 18 de agosto de 2026; explorado en elicitación, 22/09/2026 |
-| RF-013 | Generación de pedidos por proveedor          | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
+| RF-013 | Generación de listas de compra por proveedor          | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
 | RF-014 | Consulta de recomendaciones por sucursal     | Imprescindible | Visión del producto, 18 de agosto de 2026                                   |
 | RF-015 | Consulta consolidada de múltiples sucursales | Importante     | Visión del producto, 18 de agosto de 2026                                   |
 
@@ -125,20 +127,20 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 
 | Campo                      | Contenido                                                                                                                                                             |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Descripción**            | El sistema calcula la demanda esperada de un producto para una sucursal utilizando información histórica de ventas disponible.                                        |
+| **Descripción** | El sistema calcula la demanda esperada por producto y sucursal con el historial de ventas disponible. |
 | **Origen**                 | Visión del producto, 18 de agosto de 2026; derivado de la descripción del cálculo de recomendaciones. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real. |
 | **Prioridad**              | Imprescindible                                                                                                                                                        |
-| **Criterio de aceptación** | Al existir información histórica suficiente para un producto y sucursal, el sistema calcula y muestra una demanda esperada para el periodo de compra correspondiente. |
+| **Criterio de aceptación** | Con historial utilizable, el sistema calcula la demanda esperada para el periodo de compra. Si el historial es insuficiente para una estimación confiable pero permite estimar, identifica el resultado como de baja confianza. Si los datos no permiten estimar, informa la incidencia del producto. |
 | **Relacionado con**        | RF-001, RF-007, RF-011                                                                                                                                                |
 
 #### RF-007 · Generación de recomendación de compra
 
 | Campo                      | Contenido                                                                                                                                                         |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Descripción**            | El sistema genera una cantidad recomendada de compra para cada producto y sucursal a partir de la demanda esperada y el inventario disponible.                    |
+| **Descripción** | El sistema genera una cantidad recomendada por producto y sucursal a partir de la demanda esperada y el inventario disponible. Acepta una solicitud para un producto o para todos los productos de una sucursal. |
 | **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                        |
 | **Prioridad**              | Imprescindible                                                                                                                                                    |
-| **Criterio de aceptación** | Al existir los datos requeridos para un producto y sucursal, el sistema genera una recomendación que contiene el producto, la sucursal y la cantidad recomendada. |
+| **Criterio de aceptación** | Con entradas válidas, el sistema devuelve el producto, la sucursal y la cantidad recomendada. Con los mismos datos y configuración, el cálculo individual y el resultado de ese producto dentro de la generación por sucursal coinciden. La generación por sucursal devuelve las recomendaciones obtenidas y las incidencias por producto. La falta de datos de un producto permite continuar el cálculo de los demás. |
 | **Relacionado con**        | RF-002, RF-006, RF-008, RF-009, RF-010, RF-011, RF-012                                                                                                            |
 
 #### RF-008 · Consideración del tiempo de entrega
@@ -165,10 +167,10 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 
 | Campo                      | Contenido                                                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Descripción**            | El sistema ajusta la cantidad recomendada a las condiciones de compra registradas del proveedor.                                                        |
+| **Descripción** | El sistema ajusta la cantidad recomendada a las condiciones de compra configuradas para la relación entre producto y proveedor, como unidad, presentación, múltiplo y pedido mínimo. |
 | **Origen**                 | Regla de negocio de la Visión del producto, 18 de agosto de 2026. Explorado en ejercicio de elicitación, 22/09/2026, como posible necesidad real ligada a condiciones de proveedores. |
 | **Prioridad**              | Imprescindible                                                                                                                                          |
-| **Criterio de aceptación** | Al existir una presentación, unidad de venta o pedido mínimo registrado para el producto, la cantidad recomendada respeta la condición correspondiente. |
+| **Criterio de aceptación** | Si la necesidad es positiva, el sistema ajusta la cantidad a las condiciones registradas en unidades compatibles. Si el ajuste supera la necesidad calculada, identifica el posible exceso. Si la necesidad es cero, la cantidad recomendada es cero. |
 | **Relacionado con**        | RF-003, RF-004, RF-007                                                                                                                                  |
 
 #### RF-011 · Visualización de justificación
@@ -191,14 +193,14 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 | **Criterio de aceptación** | Al consultar una recomendación, el sistema muestra un nivel de riesgo de faltante o exceso cuando los datos necesarios para calcularlo están disponibles. |
 | **Relacionado con**        | RF-007, RF-009, RF-011                                                                                                                                    |
 
-#### RF-013 · Generación de pedidos por proveedor
+#### RF-013 · Generación de listas de compra por proveedor
 
 | Campo                      | Contenido                                                                                                                                                                                             |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Descripción**            | El sistema genera una lista de compra agrupada por proveedor a partir de las recomendaciones seleccionadas.                                                                                           |
 | **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                                                            |
 | **Prioridad**              | Imprescindible                                                                                                                                                                                        |
-| **Criterio de aceptación** | Al seleccionar recomendaciones correspondientes a uno o más proveedores, el sistema genera una lista separada para cada proveedor e incluye los productos y cantidades recomendadas correspondientes. |
+| **Criterio de aceptación** | Al seleccionar recomendaciones de uno o más proveedores, el sistema genera una lista por proveedor que identifica los productos, las cantidades recomendadas y sus sucursales de origen. Se entrega al usuario para su revisión. |
 | **Relacionado con**        | RF-004, RF-007, RF-015                                                                                                                                                                                |
 
 #### RF-014 · Consulta de recomendaciones por sucursal
@@ -246,8 +248,8 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 | Campo                   | Contenido                                                                                                                                                                        |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Rendimiento                                                                                                                                                                      |
-| **Descripción**         | El sistema genera las recomendaciones de compra de una sucursal en menos de 10 segundos cuando procesa hasta 10,000 registros de ventas históricos.                              |
-| **Métrica**             | Tiempo transcurrido entre la solicitud de generación y la disponibilidad de todas las recomendaciones, medido con hasta 10,000 registros de ventas históricos para una sucursal. |
+| **Descripción**         | El sistema genera las recomendaciones de compra de una sucursal en menos de 10 segundos cuando procesa hasta 10 000 registros de ventas históricos.                              |
+| **Métrica** | Tiempo entre la solicitud de generación para toda la sucursal y la disponibilidad del conjunto de resultados e incidencias, con hasta 10 000 registros históricos de ventas para dicha sucursal. |
 | **Origen**              | Derivado del tipo de sistema. El límite es un supuesto propio sujeto a validación.                                                                                              |
 | **Prioridad**           | Imprescindible                                                                                                                                                                   |
 | **Por qué importa**     | Una generación demasiado lenta dificulta consultar las recomendaciones durante el proceso de planeación de compras.                                                              |
@@ -283,8 +285,8 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Seguridad                                                                                                                                                                              |
 | **Descripción**         | El sistema impide que un usuario consulte información perteneciente a una empresa distinta de aquella a la que está asociado.                                                          |
-| **Métrica**             | En el 100 % de las pruebas realizadas con dos empresas independientes, un usuario de una empresa no debe visualizar ventas, inventario, recomendaciones ni pedidos de la otra empresa. |
-| **Origen**              | Supuesto propio derivado del modelo SaaS y del soporte para diferentes empresas. Un ejercicio de elicitación (22/09/2026) planteó además una pregunta abierta, no cubierta por este supuesto: si un encargado de sucursal debería ver información de otras sucursales de la misma empresa. |
+| **Métrica**             | En el 100 % de las pruebas realizadas con dos empresas independientes, un usuario de una empresa no debe visualizar ventas, inventario, recomendaciones ni listas de compra de la otra empresa. |
+| **Origen** | Supuesto propio derivado del modelo SaaS y del soporte para diferentes empresas. |
 | **Prioridad**           | Imprescindible                                                                                                                                                                         |
 | **Por qué importa**     | La exposición de información de una empresa a otra afectaría la confidencialidad de sus datos comerciales.                                                                             |
 | **Afecta a**            | RF-001, RF-002, RF-005, RF-007, RF-013, RF-015                                                                                                                                         |
@@ -355,12 +357,12 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 
 ### 5.1 Actores
 
-Identificados a partir de un ejercicio de elicitación (22/09/2026), agrupando por rol y no por persona:
+Identificados a partir del ejercicio de elicitación del 22/09/2026. Las descripciones representan tareas habituales de cada actor.
 
 | Actor | Descripción |
 |---|---|
-| **Responsable de sucursal** | Dueño de una tienda de abarrotes independiente o encargado de una sucursal dentro de una cadena. Consulta ventas, inventario y recomendaciones de su propia sucursal. |
-| **Responsable de compras de la cadena** | Dueño o encargado que consolida varias sucursales. Consulta recomendaciones de múltiples sucursales y genera pedidos agrupados por proveedor. |
+| **Responsable de sucursal** | Dueño de una tienda de abarrotes independiente o encargado de una sucursal dentro de una cadena. Consulta ventas, inventario y recomendaciones por sucursal. |
+| **Responsable de compras de la cadena** | Dueño o encargado que consolida varias sucursales. Consulta recomendaciones de múltiples sucursales y prepara listas de compra agrupadas por proveedor. |
 
 ### 5.2 Lista de casos de uso
 
@@ -370,24 +372,26 @@ Confirmados tras el ejercicio de elicitación del 22/09/2026:
 | ----- | ------------------------------------------------ | -------------------------------------- |
 | CU-01 | Consultar información de ventas e inventario     | RF-001, RF-002, RF-005                 |
 | CU-02 | Consultar información de productos y proveedores | RF-003, RF-004                         |
-| CU-03 | Generar recomendaciones de compra                | RF-006, RF-007, RF-008, RF-009, RF-010 |
+| CU-03 | Generar recomendaciones de compra | RF-001, RF-002, RF-003, RF-004, RF-005, RF-006, RF-007, RF-008, RF-009, RF-010, RF-011, RF-012 |
 | CU-04 | Consultar y analizar una recomendación           | RF-011, RF-012, RF-014                 |
-| CU-05 | Generar pedidos agrupados por proveedor          | RF-013, RF-015                         |
+| CU-05 | Generar listas de compra por proveedor          | RF-013, RF-015                         |
 | CU-06 | Consultar información consolidada de sucursales  | RF-005, RF-014, RF-015                 |
 
 No se identificaron requisitos sin caso de uso asociado ni casos de uso sin requisitos detrás.
 
-### 5.3 Caso de uso detallado: CU-03 · Generar recomendación de compra
+### 5.3 Caso de uso detallado · CU-03 Generar recomendaciones de compra
 
 | Campo | Contenido |
 |---|---|
-| **Actor principal** | Responsable de sucursal |
-| **Objetivo** | Obtener la cantidad recomendada a pedir de un producto para su sucursal, lista para incluirse en el pedido al proveedor. |
-| **Precondición** | El producto y la sucursal tienen información de ventas, inventario y proveedor registrada. |
-| **Escenario principal** | 1. El responsable de sucursal selecciona la sucursal y el producto para el que quiere una recomendación. 2. El sistema recupera el historial de ventas del producto en esa sucursal y calcula la demanda esperada, considerando patrones históricos, día de la semana y estacionalidad. 3. El sistema recupera la cantidad de inventario disponible del producto en la sucursal. 4. El sistema recupera las características del producto (unidad de venta, presentación, vida útil si aplica) y las condiciones del proveedor asociado (tiempo de entrega, pedido mínimo). 5. El sistema calcula la cantidad recomendada a partir de la demanda esperada y el inventario disponible, considerando el tiempo de entrega del proveedor y, si el producto es perecedero, su vida útil o caducidad. 6. El sistema ajusta la cantidad para respetar las condiciones de compra del proveedor. 7. El sistema muestra la recomendación con el producto, la sucursal y la cantidad recomendada. |
-| **Flujos alternos** | 3a. No hay dato de inventario disponible para el producto en esa sucursal: el sistema no genera la recomendación y notifica al responsable de sucursal que falta ese dato de entrada.<br>5a. No hay suficiente historial de ventas para calcular una demanda confiable: el sistema genera la recomendación con la información disponible, marcándola como de baja confianza.<br>6a. La cantidad ajustada a las condiciones del proveedor (por ejemplo, redondeada al pedido mínimo) supera de forma notable la demanda esperada: el sistema marca esta diferencia como riesgo de exceso. |
-| **Postcondición** | La recomendación queda generada y disponible para su consulta posterior. |
-| **Requisitos que realiza** | RF-001, RF-002, RF-003, RF-004, RF-006, RF-007, RF-008, RF-009, RF-010. También activa RNF-CON-001 (consistencia) y RNF-REN-001 (tiempo de generación). |
+| **Actores** | Responsable de sucursal y responsable de compras de la cadena. |
+| **Objetivo** | Obtener la cantidad de compra recomendada para un producto de una sucursal o para todos los productos de esa sucursal. |
+| **Precondición** | La sucursal está registrada. Para una solicitud individual, el producto pertenece al catálogo de la sucursal. |
+| **Escenario principal** | 1. El usuario selecciona la sucursal y pide el cálculo individual o el cálculo para todos sus productos. 2. El sistema determina los productos que va a procesar. 3. Por cada producto, obtiene ventas históricas, inventario, características y condiciones de compra aplicables. 4. Si las entradas permiten calcular, estima la demanda y obtiene la necesidad a partir del inventario, el plazo de entrega y la caducidad cuando aplique. 5. Si la necesidad es positiva, aplica las condiciones de compra a la cantidad. 6. Guarda las recomendaciones con su justificación y devuelve los resultados e incidencias por producto. |
+| **Flujos alternos** | 2a. La sucursal no tiene productos registrados. El sistema devuelve un conjunto vacío e informa el motivo.<br>3a. Si falta el dato de inventario o una condición indispensable para calcular, informa la incidencia y omite ese producto. Un inventario registrado con valor cero es válido.<br>4a. Si el historial utilizable es insuficiente para una estimación confiable, marca la recomendación como de baja confianza. Si el historial no permite estimar, registra una incidencia y omite ese producto.<br>5a. Si la necesidad es cero, devuelve una cantidad recomendada de cero.<br>5b. Si el ajuste comercial supera la necesidad calculada, indica el posible exceso. Cada incidencia afecta solo al producto correspondiente. |
+| **Postcondición** | Las recomendaciones generadas quedan disponibles para consulta posterior en CU-04. El usuario puede seleccionarlas para preparar listas por proveedor en CU-05. |
+| **Requisitos relacionados** | RF-001 a RF-012, RNF-REN-001 y RNF-CON-001. |
+
+Véase el [diagrama de casos de uso](diagramas/caso-de-uso.md#diagrama-de-casos-de-uso).
 
 ---
 
@@ -395,19 +399,19 @@ No se identificaron requisitos sin caso de uso asociado ni casos de uso sin requ
 
 | Requisito   | Origen                            | Caso de uso                                            | Elemento del prototipo              |
 | ----------- | --------------------------------- | -------------------------------------------------------- | ------------------------------------ |
-| RF-001      | Visión del producto               | CU-01 Consultar información de ventas e inventario     | Vista de ventas                     |
-| RF-002      | Visión del producto               | CU-01 Consultar información de ventas e inventario     | Vista de inventario                 |
-| RF-003      | Visión del producto               | CU-02 Consultar información de productos y proveedores | Vista de producto                   |
-| RF-004      | Visión del producto               | CU-02 Consultar información de productos y proveedores | Vista de proveedor                  |
-| RF-005      | Visión del producto               | CU-01 / CU-06                                          | Selector de sucursal                |
+| RF-001      | Visión del producto               | CU-01 Consultar información de ventas e inventario / CU-03     | Vista de ventas                     |
+| RF-002      | Visión del producto               | CU-01 Consultar información de ventas e inventario / CU-03     | Vista de inventario                 |
+| RF-003      | Visión del producto               | CU-02 Consultar información de productos y proveedores / CU-03 | Vista de producto                   |
+| RF-004      | Visión del producto               | CU-02 Consultar información de productos y proveedores / CU-03 | Vista de proveedor                  |
+| RF-005      | Visión del producto               | CU-01 / CU-06 / CU-03                                          | Selector de sucursal                |
 | RF-006      | Visión del producto               | CU-03 Generar recomendaciones de compra                | Motor de cálculo                    |
 | RF-007      | Visión del producto               | CU-03 Generar recomendaciones de compra                | Vista de recomendaciones            |
 | RF-008      | Regla de negocio                  | CU-03 Generar recomendaciones de compra                | Parámetros del cálculo              |
 | RF-009      | Regla de negocio                  | CU-03 Generar recomendaciones de compra                | Parámetros de productos perecederos |
 | RF-010      | Regla de negocio                  | CU-03 Generar recomendaciones de compra                | Condiciones de compra               |
-| RF-011      | Visión del producto               | CU-04 Consultar y analizar una recomendación           | Detalle de recomendación            |
-| RF-012      | Visión del producto               | CU-04 Consultar y analizar una recomendación           | Indicador de riesgo                 |
-| RF-013      | Visión del producto               | CU-05 Generar pedidos agrupados por proveedor          | Lista de pedidos                    |
+| RF-011      | Visión del producto               | CU-04 Consultar y analizar una recomendación / CU-03           | Detalle de recomendación            |
+| RF-012      | Visión del producto               | CU-04 Consultar y analizar una recomendación / CU-03           | Indicador de riesgo                 |
+| RF-013      | Visión del producto               | CU-05 Generar listas de compra por proveedor          | Lista de compra                    |
 | RF-014      | Visión del producto               | CU-04 Consultar y analizar una recomendación           | Filtro por sucursal                 |
 | RF-015      | Visión del producto               | CU-05 / CU-06                                          | Vista consolidada                   |
 | RNF-REN-001 | Derivado del tipo de sistema      | CU-03                                                  | Generación de recomendaciones       |
@@ -431,5 +435,6 @@ No se identificaron requisitos sin caso de uso asociado ni casos de uso sin requ
 | 22/09/2026 | RNF-ESC-001 | Se corrigió la métrica de 50 a 15 sucursales | El ejercicio de elicitación sugirió que la cifra original no tenía base real |
 | 22/09/2026 | RNF-SEG-002 | Se agregó una nota sobre una pregunta abierta: si un encargado de sucursal debería ver información de otras sucursales de la misma empresa | Surgió en el ejercicio de elicitación, no estaba contemplado en el supuesto original |
 | 22/09/2026 | Sección 5 | Se agregaron actores, se confirmaron los seis casos de uso y se redactó completo CU-03 con escenario principal y flujos alternos | Resultado del ejercicio de casos de uso posterior a la elicitación |
+| 17/11/2026 | Alcance, requisitos y casos de uso | Se distinguió la generación individual de la generación completa por sucursal y se precisaron las condiciones de compra y el resultado de CU-05 | Cierre del alcance de OrderFlow |
 
 ---
