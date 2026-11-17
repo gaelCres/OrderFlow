@@ -1,6 +1,6 @@
 # Arquitectura de OrderFlow
 
-Orden de lectura: [requisitos](../../docs/especificacion-requisitos.md), [ADR-001](adr-001-monolito-modular.md) y [modelo UML](modelo-uml.md). Los diagramas describen el diseño propuesto.
+Orden de lectura: [requisitos](../especificacion-requisitos.md), [ADR-001](adr-001-monolito-modular.md) y [modelo UML](modelo-uml.md). Los diagramas describen el diseño propuesto.
 
 ## C4 nivel 1 · Contexto
 

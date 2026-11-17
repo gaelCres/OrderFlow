@@ -1,6 +1,6 @@
 # Modelo UML de OrderFlow
 
-El flujo principal desarrolla [CU-03](../../docs/especificacion-requisitos.md#53-caso-de-uso-detallado--cu-03-generar-recomendaciones-de-compra). CU-04 consulta las recomendaciones guardadas y CU-05 agrupa una selección en listas por proveedor.
+El flujo principal desarrolla [CU-03](../especificacion-requisitos.md#53-caso-de-uso-detallado--cu-03-generar-recomendaciones-de-compra). CU-04 consulta las recomendaciones guardadas y CU-05 agrupa una selección en listas por proveedor.
 
 ## Paquetes de la aplicación
 

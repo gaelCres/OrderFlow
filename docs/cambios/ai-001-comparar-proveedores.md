@@ -27,8 +27,8 @@ En esos datos de prueba, los paquetes son enteros y se redondean hacia arriba pa
 
 | Artefacto | Unidad | Qué habría que cambiar |
 |---|---|---|
-| [Requisitos funcionales](../../docs/especificacion-requisitos.md#3-requisitos-funcionales) | 2 | Definir un requisito de comparación y su criterio de aceptación. Vincularlo con RF-004 para datos de proveedores, RF-008 para el plazo mostrado, RF-010 para el ajuste por condición y RF-011 para presentar los resultados en el detalle. |
-| [Caso de uso y prototipo](../../docs/diagramas/caso-de-uso.md) | 2 | Extender CU-04 con la selección y comparación de dos proveedores del mismo producto. Añadir al diagrama de casos de uso la extensión de CU-04 y al prototipo la vista que presenta los resultados y avisa cuando faltan datos para comparar. |
+| [Requisitos funcionales](../especificacion-requisitos.md#3-requisitos-funcionales) | 2 | Definir un requisito de comparación y su criterio de aceptación. Vincularlo con RF-004 para datos de proveedores, RF-008 para el plazo mostrado, RF-010 para el ajuste por condición y RF-011 para presentar los resultados en el detalle. |
+| [Caso de uso y prototipo](../diagramas/caso-de-uso.md) | 2 | Extender CU-04 con la selección y comparación de dos proveedores del mismo producto. Añadir al diagrama de casos de uso la extensión de CU-04 y al prototipo la vista que presenta los resultados y avisa cuando faltan datos para comparar. |
 | [Diagrama de clases](../arch/modelo-uml.md#clases) | 4 | Reutilizar Producto, Proveedor y CondicionProveedor. Modelar el resultado de cada opción y el acceso a la necesidad previa al ajuste. La cantidad final guardada por sí sola no permite recuperar esa necesidad si el redondeo o el mínimo la aumentaron. |
 | [Diagramas de secuencia](../arch/modelo-uml.md#secuencia--cu-03-generar-recomendaciones) | 4 | Dibujar la secuencia de comparación de CU-04. La vista pide comparar, Persistencia recupera las dos condiciones y Recomendaciones calcula los ajustes por separado. Con la alternativa B también se actualiza la secuencia de CU-03. |
 
