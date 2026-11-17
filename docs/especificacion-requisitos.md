@@ -2,7 +2,7 @@
 
 **Sistema:** OrderFlow
 **Autor:** Gael Crespo Maceiras
-**Versión:** 1.2
+**Versión:** 1.3
 **Fecha de la última actualización:** 17/11/2026
 
 ---
@@ -140,8 +140,8 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 | **Descripción** | El sistema genera una cantidad recomendada por producto y sucursal a partir de la demanda esperada y el inventario disponible. Acepta una solicitud para un producto o para todos los productos de una sucursal. |
 | **Origen**                 | Visión del producto, 18 de agosto de 2026.                                                                                                                        |
 | **Prioridad**              | Imprescindible                                                                                                                                                    |
-| **Criterio de aceptación** | Con entradas válidas, el sistema devuelve el producto, la sucursal y la cantidad recomendada. Con los mismos datos y configuración, el cálculo individual y el resultado de ese producto dentro de la generación por sucursal coinciden. La generación por sucursal devuelve las recomendaciones obtenidas y las incidencias por producto. La falta de datos de un producto permite continuar el cálculo de los demás. |
-| **Relacionado con**        | RF-002, RF-006, RF-008, RF-009, RF-010, RF-011, RF-012                                                                                                            |
+| **Criterio de aceptación** | Con entradas válidas, el sistema devuelve el producto, la sucursal y la cantidad recomendada. Con los mismos datos y configuración, el cálculo individual y el resultado de ese producto dentro de la generación por sucursal coinciden. La generación por sucursal devuelve las recomendaciones obtenidas y las incidencias por producto. La falta de datos de un producto permite continuar el cálculo de los demás. Cada cálculo por producto cumple el límite de menos de 10 segundos bajo las condiciones de RNF-REN-001. El tiempo total de la generación por sucursal depende del número de productos que procese. |
+| **Relacionado con** | RF-002, RF-006, RF-008, RF-009, RF-010, RF-011, RF-012, RNF-REN-001 |
 
 #### RF-008 · Consideración del tiempo de entrega
 
@@ -231,7 +231,7 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 
 | ID          | Atributo       | Nombre                                   | Prioridad      | Origen                                       |
 | ----------- | -------------- | ----------------------------------------- | -------------- | ---------------------------------------------- |
-| RNF-REN-001 | Rendimiento    | Tiempo de generación de recomendaciones  | Imprescindible | Derivado del tipo de sistema                   |
+| RNF-REN-001 | Rendimiento    | Tiempo de generación por producto  | Imprescindible | Derivado del tipo de sistema                   |
 | RNF-REN-002 | Rendimiento    | Tiempo de consulta de recomendaciones    | Importante     | Derivado del tipo de sistema                   |
 | RNF-SEG-001 | Seguridad      | Protección del acceso                    | Imprescindible | Supuesto propio derivado del tipo de sistema   |
 | RNF-SEG-002 | Seguridad      | Separación de información entre empresas | Imprescindible | Supuesto propio derivado del modelo SaaS       |
@@ -243,13 +243,13 @@ Este conflicto se exploró en un ejercicio de elicitación (22/09/2026), donde s
 
 ### 4.2 Fichas
 
-#### RNF-REN-001 · Tiempo de generación de recomendaciones
+#### RNF-REN-001 · Tiempo de generación por producto
 
 | Campo                   | Contenido                                                                                                                                                                        |
 | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Atributo de calidad** | Rendimiento                                                                                                                                                                      |
-| **Descripción**         | El sistema genera las recomendaciones de compra de una sucursal en menos de 10 segundos cuando procesa hasta 10 000 registros de ventas históricos.                              |
-| **Métrica** | Tiempo entre la solicitud de generación para toda la sucursal y la disponibilidad del conjunto de resultados e incidencias, con hasta 10 000 registros históricos de ventas para dicha sucursal. |
+| **Descripción** | El sistema genera la recomendación de compra de un producto de una sucursal en menos de 10 segundos, con hasta 10 000 registros históricos de ventas de ese producto en dicha sucursal. |
+| **Métrica** | Tiempo desde el inicio del cálculo individual de un producto hasta la disponibilidad de su resultado, incluida la lectura de datos, el pronóstico, los ajustes y el guardado. Se verifica con hasta 10 000 registros históricos de ese producto en la sucursal. En el modo de generación por sucursal, el límite se aplica a cada producto procesado. El tiempo total depende de la cantidad de productos y de la coordinación del recorrido. |
 | **Origen**              | Derivado del tipo de sistema. El límite es un supuesto propio sujeto a validación.                                                                                              |
 | **Prioridad**           | Imprescindible                                                                                                                                                                   |
 | **Por qué importa**     | Una generación demasiado lenta dificulta consultar las recomendaciones durante el proceso de planeación de compras.                                                              |
@@ -391,6 +391,8 @@ No se identificaron requisitos sin caso de uso asociado ni casos de uso sin requ
 | **Postcondición** | Las recomendaciones generadas quedan disponibles para consulta posterior en CU-04. El usuario puede seleccionarlas para preparar listas por proveedor en CU-05. |
 | **Requisitos relacionados** | RF-001 a RF-012, RNF-REN-001 y RNF-CON-001. |
 
+RNF-REN-001 limita a menos de 10 segundos el procesamiento individual de cada producto, tanto en la solicitud individual como dentro del recorrido por sucursal. La duración completa de la solicitud por sucursal depende del número de productos procesados.
+
 Véase el [diagrama de casos de uso](diagramas/caso-de-uso.md#diagrama-de-casos-de-uso).
 
 ---
@@ -436,5 +438,6 @@ Véase el [diagrama de casos de uso](diagramas/caso-de-uso.md#diagrama-de-casos-
 | 22/09/2026 | RNF-SEG-002 | Se agregó una nota sobre una pregunta abierta: si un encargado de sucursal debería ver información de otras sucursales de la misma empresa | Surgió en el ejercicio de elicitación, no estaba contemplado en el supuesto original |
 | 22/09/2026 | Sección 5 | Se agregaron actores, se confirmaron los seis casos de uso y se redactó completo CU-03 con escenario principal y flujos alternos | Resultado del ejercicio de casos de uso posterior a la elicitación |
 | 17/11/2026 | Alcance, requisitos y casos de uso | Se distinguió la generación individual de la generación completa por sucursal y se precisaron las condiciones de compra y el resultado de CU-05 | Cierre del alcance de OrderFlow |
+| 17/11/2026 | RF-007, RNF-REN-001 y CU-03 | Se corrigió el límite de generación a menos de 10 segundos por producto y sucursal. La duración total de la generación por sucursal depende del número de productos | Aclaración del responsable del proyecto |
 
 ---

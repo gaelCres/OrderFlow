@@ -8,7 +8,7 @@
 
 El ejercicio de elicitación describe una cadena de seis sucursales que consolida manualmente la información de compras. OrderFlow necesita calcular cantidades con ventas e inventario por producto y sucursal. Puede recibir una solicitud para un producto o para todos los productos de la sucursal. También necesita conservar las recomendaciones para su consulta posterior.
 
-El proceso actual depende de reportes manuales. Cada empresa puede tener datos de origen en formatos distintos. La meta de rendimiento de RNF-REN-001 es procesar hasta 10 000 registros históricos de una sucursal y dejar disponible el resultado completo en menos de 10 segundos.
+El proceso actual depende de reportes manuales. Cada empresa puede tener datos de origen en formatos distintos. La meta de rendimiento de RNF-REN-001 es generar el resultado de un producto de una sucursal en menos de 10 segundos, con hasta 10 000 registros históricos de ventas de ese producto. El modo sucursal repite el cálculo y su tiempo total depende del número de productos procesados.
 
 ## Alternativas consideradas
 
@@ -27,11 +27,11 @@ En Integración de datos, el patrón **Adapter** convierte los registros externo
 
 - **A favor.** Se opera una sola aplicación web y un almacén de datos. La fórmula y las condiciones de compra se mantienen en un sitio y se reutilizan en ambos modos.
 - **A favor.** Incorporar otro formato de datos puede concentrarse en un adaptador de entrada. Pronóstico, reglas de compra y consultas comparten el origen de datos normalizado.
-- **En contra.** Una generación para toda la sucursal puede competir por recursos con las consultas. Hay que medir el tiempo completo con hasta 10 000 registros históricos, incluidos los productos con incidencias.
+- **En contra.** Una generación para toda la sucursal puede competir por recursos con las consultas. Hay que medir el tiempo de cada producto con hasta 10 000 registros históricos propios y registrar por separado la duración total del recorrido por sucursal.
 - **En contra.** La carga por CSV depende de que la empresa entregue archivos actualizados y compatibles. El desfase entre la fecha de corte y el cálculo puede reducir la utilidad de la recomendación.
 
 ## Validación de la decisión
 
-Medir RNF-REN-001 con un conjunto representativo y verificar que el mismo producto, con las mismas entradas y configuración, dé el mismo resultado en ambos modos. Si las consultas repetidas de datos dominan el tiempo, evaluar la precarga por sucursal. Si el cálculo sigue comprometiendo el objetivo, revisar la separación del proceso predictivo.
+Medir el límite por producto de RNF-REN-001 con un conjunto representativo y verificar que el mismo producto, con las mismas entradas y configuración, dé el mismo resultado en ambos modos. Si las consultas repetidas de datos dominan el tiempo, evaluar la precarga por sucursal. Si el cálculo sigue comprometiendo el objetivo, revisar la separación del proceso predictivo.
 
 [C4 de OrderFlow](diagramas.md) · [Modelo UML](modelo-uml.md)

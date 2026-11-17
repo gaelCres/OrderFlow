@@ -39,7 +39,7 @@ En esos datos de prueba, los paquetes son enteros y se redondean hacia arriba pa
 | [ADR-001](../arch/adr-001-monolito-modular.md) | 3 | Sin impacto sobre la decisión de usar una aplicación modular y PostgreSQL. Revisar el costo previsto de generar por sucursal si se precalculan las opciones. |
 | [C4 de contexto y contenedores](../arch/diagramas.md#c4-nivel-2--contenedores) | 3 | Sin impacto sobre los actores, los sistemas externos y los contenedores. La comparación se resolvería dentro de la aplicación web. |
 | [C4 de componentes y paquetes](../arch/diagramas.md#c4-nivel-3--componentes-de-la-aplicación-web) | 3 y 4 | Actualizar las responsabilidades de Presentación, Recomendaciones y Persistencia para documentar la consulta y el cálculo de las opciones. |
-| RNF-REN-001 y actividad de CU-03 | 2 y 4 | Con A, sin impacto en la generación por sucursal. Con B, agregar la precalculación al flujo de actividad y volver a medir el tiempo de la generación completa. |
+| RNF-REN-001 y actividad de CU-03 | 2 y 4 | Con A, sin impacto en la generación por sucursal. Con B, agregar la precalculación al flujo de actividad y volver a medir el tiempo de cada producto frente al límite de 10 segundos de RNF-REN-001. Registrar también la duración total por sucursal. |
 | RNF-SEG-002 | 2 | Mantener las consultas de ambas condiciones acotadas al catálogo y a la empresa de la sesión. Incluir una prueba con datos de dos empresas. |
 | CU-05 y RF-013 | 2 | Sin impacto con una comparación informativa. Habría que revisarlos si una solicitud posterior permite trasladar el proveedor elegido a la lista de compra. |
 | Máquina de estados | 4 | Sin impacto. El resultado de la comparación se presenta para consulta y carece de un ciclo de vida propio. |
@@ -55,7 +55,7 @@ El pronóstico desde el historial de ventas, el cálculo individual, su reutiliz
 | Confundir la cantidad final redondeada con la necesidad original | Alta si se reutiliza solo el valor guardado | Las opciones partirían de una base incorrecta. Guardar la necesidad antes del ajuste cuando se genera una recomendación nueva y mostrar una incidencia si una recomendación previa carece de ese dato. |
 | Interpretar tres paquetes como opciones equivalentes | Media | Pueden representar cantidades totales y plazos distintos. Mostrar los kilos y los días junto a los paquetes y conservar la necesidad de referencia a la vista. |
 | Condiciones de proveedor incompletas o en unidades incompatibles | Media | La comparación puede producir cantidades engañosas. Validar unidades, disponibilidad de la condición y tamaño de paquete antes de calcular. |
-| Aumentar la latencia de generación por sucursal | Media con B | El precálculo se repite por producto. Medir con el volumen de RNF-REN-001. |
+| Aumentar la latencia de generación por sucursal | Media con B | El precálculo se repite por producto. Medir cada cálculo con el volumen por producto de RNF-REN-001 y registrar la duración del recorrido completo. |
 | Mantener la comparación manual al rechazar el cambio | Media | Cuando haya dos proveedores, la persona seguirá revisando sus condiciones y calculando por separado, con riesgo de error. Se conserva el apoyo de la recomendación básica. |
 
 ## Alternativas consideradas
